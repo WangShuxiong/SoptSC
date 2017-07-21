@@ -1,8 +1,8 @@
-This is a matlab implementation of a computational method, SOptSC, for single
+This is a matlab implementation of a computational method, SoptSC, for single
 cell data analysis.
 
 The code file mainly includes:
-1) SOptSC.m  --------€the M file contains all components of the algorithm. Please refer
+1) SOptSC.m  --------â‚¬the M file contains all components of the algorithm. Please refer
 	     to this file for further information.
 2) example.m -------- an example on how to run SOptSC on a specific data.
 3) symnmf2   -------- Non-negative matrix factorization (NMF) tool from
