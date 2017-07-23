@@ -58,7 +58,8 @@ cmap = colormap;
 mymap = cmap(1:58,:);
 colormap(mymap);
 figure(1);
-scatter(dvis(cell_order,2),dvis(cell_order,3),40,c,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
+%scatter(dvis(cell_order,2),dvis(cell_order,3),40,c,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
+scatter(dvis(cell_order,2),dvis(cell_order,3),40,c,'filled');
 
 box on;
 cb = colorbar;
@@ -78,7 +79,8 @@ print(1,'-dtiff','Results\pseudotime.tiff');
 %% Visualization of subpopulations
 figure(2);
 for ik = 1:No_cluster
-    scatter(dvis(find(idx==ik),2),dvis(find(idx==ik),3),40,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
+    %scatter(dvis(find(idx==ik),2),dvis(find(idx==ik),3),40,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
+    scatter(dvis(find(idx==ik),2),dvis(find(idx==ik),3),40,'filled');
     hold on;
 end
 box on;
@@ -116,7 +118,7 @@ if isempty(NC)
     box on;
     set(gca,'LineWidth',1.5);
     xlabel('i');
-    ylabel('Eigenvalue of graph Laplacian \lambda_i');
+    ylabel('Eigenvalues of graph Laplacian \lambda_i');
     set(gca,'FontName','Arial');
     set(gca,'FontSize',12);
     print(3,'-dtiff','Results\EigenGap.tiff');
