@@ -7,7 +7,8 @@ function [W,P,No_cluster,cluster_label,cell_order] = SOptSC(data,init_point,NC)
 %   -- init_point:
 %       index of the initial point for pseudotemporal ordering and cell lineage inference
 %   -- NC:
-%       Number of Cluster specified by user, if NC = [] (default), then the algorithm will compute the number.
+%       Number of Cluster specified by user, if NC = [] (default),
+%       then SOptSC will predict the number of clusters.
 %   -- plot: if plot = 1;  plots the result (default).
 %            if plot = 0;  plots off.
 %
@@ -73,7 +74,8 @@ set(gca,'ytick',[]);
 set(gca,'FontName','Arial');
 set(gca,'FontSize',12);
 print(1,'-dtiff','Results\pseudotime.tiff');
-%% Subpopulations visualization
+
+%% Visualization of subpopulations
 figure(2);
 for ik = 1:No_cluster
     scatter(dvis(find(idx==ik),2),dvis(find(idx==ik),3),40,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
@@ -107,7 +109,7 @@ print(2,'-dtiff','Results\subpopulation.tiff');
 root_cell = init_point;
 [Tree,pred,cluster_center] = lineage(idx,P,root_cell);
 
-% display eigen-gap of graph Laplacian
+% Display eigengap of the graph Laplacian
 if isempty(NC)
     figure(3);
     scatter(1:min([30 size(W,1)]),eigenvalues(1:min([30 size(W,1)])),20,'filled');
