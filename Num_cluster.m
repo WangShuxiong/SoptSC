@@ -1,5 +1,5 @@
 function [eigenvalues,No_cluster] = Num_cluster(W)
-% Computing number of cluster
+% Computing the number of clusters
 nno_cluster = 1:25; tau = 0.3; tol = 0.01;
 [all_eigs,M_all] = consen(W,nno_cluster,tau);
 
@@ -17,7 +17,7 @@ end
 
 No_cluster2 = length(find(zz<=tol));
 No_cluster = No_cluster1;
-display('Number of cluster based on zero eigenvalues & Largest gap ');
+display('Number of clusters based on number of zero eigenvalues & largest eigengap ');
 display([No_cluster2 No_cluster]);
 
 % display('First 50 eigenvalues of graph Laplacian:');
