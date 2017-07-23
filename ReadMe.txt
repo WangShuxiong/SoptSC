@@ -1,11 +1,13 @@
-This is a matlab implementation of a computational method, SoptSC, for single
+This is a MATLAB implementation of a computational method, SoptSC, for single
 cell data analysis.
 
+Requires MATLAB R2015b or later.
+
 The code file mainly includes:
-1) SOptSC.m  --------€the M file contains all components of the algorithm. Please refer
+1) SOptSC.m  -------- this file contains all components of the algorithm. Please refer
 	     to this file for further information.
-2) example.m -------- an example on how to run SOptSC on a specific data.
-3) symnmf2   -------- Non-negative matrix factorization (NMF) tool from
+2) example.m -------- an example on how to run SOptSC on a specific dataset.
+3) symnmf2   -------- non-negative matrix factorization (NMF) tool from
 	[1] Da Kuang, Chris Ding, Haesun Park, Symmetric Nonnegative Matrix Factorization 
             for Graph Clustering, The 12th SIAM International Conference on Data Mining 
             (SDM '12), pp. 106--117.
@@ -18,8 +20,8 @@ The code file mainly includes:
 6) The computation results is saved in file Results.
 
  
-Please refer to example.m for how to use the code.
+Please refer to example.m for instructions on how to use this code.
 
 
-Please feel free to send emails to us if you have any trouble in running our code. 
-The correspondence email is shuxionw@uci.edu
+Please feel free to send us an email if you have any trouble in running our code. 
+The email address for correspondence is shuxionw@uci.edu
