@@ -1,6 +1,22 @@
-function [P,nC,W,idx,eigenvalues] = Main(nC,data)
-alpha = 0.2;
+function [P,No_cluster,W,idx,eigenvalues] = Main(nC,data)
+% This function perform the SoptSC algrithm.
+%
+% Input:
+%          nC: Number of cluster.
+%        data: A m*n matrix with m rows(genes) and n columns(cells).
+%
+% Output:
+%           W: Cell-to-cell similarity matrix.
+%           P: Transition matrix
+%  No_cluster: Number of cluster computed by SoptSC if nC = [];
+%             otherwise, No_cluster = nC
+%         idx: Cluster label
+% eigenvalues: Eigenvalues of graph Laplacian of the consensus matrix
+%
+%
 
+
+alpha = 0.2;
 realdata = data;
 realdata = realdata-min(realdata(:));
 realdata = realdata./max(realdata(:));
@@ -38,4 +54,5 @@ params.Hinit = chuzhiA;
 [HH,~,~] = symnmf_newton(W, nC, params);
 
 [~,idx] = max(HH,[],2);
+No_cluster  = nC;
 end

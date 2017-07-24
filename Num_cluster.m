@@ -5,12 +5,13 @@ nno_cluster = 1:25; tau = 0.3; tol = 0.01;
 
 zz = sort(abs(real(all_eigs)));
 
-zz_idx = find(zz<=1);
-ZZ = zz(zz_idx);
+% zz_idx = find(zz<=1);
+% ZZ = zz(zz_idx);
+ZZ = zz;
 
 if length(ZZ)>=2
     gap = ZZ(2:end) - ZZ(1:end-1);
-    [gapval,No_cluster1] = max(gap);
+    [~,No_cluster1] = max(gap);
 %     display(gapval);
 %     display(No_cluster1);
 end
