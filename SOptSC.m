@@ -37,7 +37,7 @@ nC = NC;
 
 %% Reconstruct pseudotime
 nC = No_cluster;
-% [dvis1,~] = eigs((P+P')/2);
+%[dvis1,~] = eigs((P+P')/2,5);
 % [dvis1,~] = eigs((P+P')/2);
 dvis1 = pca(P,6);
 [~,~,W1,~] = Main(nC,dvis1');

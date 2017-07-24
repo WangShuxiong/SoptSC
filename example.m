@@ -12,7 +12,7 @@ alpha = 0.5;
 beta = 0.5;
 data = processdata(data,alpha,beta);
 
+NC = [];
 %% Run SOptSC
-NC = 3;
 init_point = 1;
 [W,P,No_cluster,cluster_label,cell_order] = SOptSC(data,init_point,NC);
