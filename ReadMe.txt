@@ -8,7 +8,7 @@ This directory includes:
 	                      to its contents for further information.
    2) example.m -------- an example on how to run SOptSC on a specific dataset.
    3) pca.m     -------- PCA algrotihm from the Matlab Toolbox for Dimensionality reduction: 
-                          http://homepage.tudelft.nl/19j49
+                              http://homepage.tudelft.nl/19j49
    3) symnmf2   -------- non-negative matrix factorization (NMF) tool from:
 	                      [1] Da Kuang, Chris Ding, Haesun Park, Symmetric Nonnegative Matrix
 			      Factorization for Graph Clustering, The 12th SIAM International Conference
