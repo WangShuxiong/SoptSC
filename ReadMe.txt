@@ -1,5 +1,4 @@
-This is a MATLAB implementation of SoptSC, a computational method for single
-cell data analysis.
+This is a MATLAB implementation of SoptSC, a computational method for single cell data analysis.
 
 Requires MATLAB R2015b or later.
 
