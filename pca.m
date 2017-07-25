@@ -1,5 +1,5 @@
 function [mappedX, mapping] = pca(X, no_dims)
-%PCA Perform the PCA algorithm
+% Perform the PCA algorithm
 %
 %   [mappedX, mapping] = pca(X, no_dims)
 %
@@ -26,7 +26,7 @@ function [mappedX, mapping] = pca(X, no_dims)
         no_dims = 2;
     end
 	
-	% Make sure data is zero mean
+	% Make sure data has zero mean
     mapping.mean = mean(X, 1);
 	X = bsxfun(@minus, X, mapping.mean);
 

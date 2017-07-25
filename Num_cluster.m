@@ -1,5 +1,6 @@
 function [eigenvalues,No_cluster] = Num_cluster(W)
 % Computing the number of clusters
+
 nno_cluster = 1:25; tau = 0.3; tol = 0.01;
 [all_eigs,M_all] = consen(W,nno_cluster,tau);
 

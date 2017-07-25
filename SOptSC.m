@@ -76,7 +76,7 @@ set(gca,'FontName','Arial');
 set(gca,'FontSize',12);
 print(1,'-dtiff','Results\pseudotime.tiff');
 
-%% Visualization of subpopulations
+%% Visualization of subpopulation structure
 figure(2);
 for ik = 1:No_cluster
     %scatter(dvis(find(idx==ik),2),dvis(find(idx==ik),3),40,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
