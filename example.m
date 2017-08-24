@@ -11,7 +11,7 @@ load HEE_matrix.mat;
 data = HEE_matrix';
 
 %% Optional step: preprocess data by selecting a subset of genes
-alpha = 0.5; % 
+alpha = 0.5; % Variance in gene expression (threshold)
 beta = 0.5;  % Number of cells in which a gene is expressed
              % (threshold ratio)
 data = processdata(data,alpha,beta);
