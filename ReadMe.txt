@@ -2,8 +2,11 @@ This is a matlab implementation of a computational method, SoptSC, for single
 cell data analysis.
 
 The code file mainly includes:
-1) SOptSC.m  --------the M file contains all components of the algorithm. Please refer
-	     to this file for further information.
+1.1) SOptSC_cluster.m  --------the M file contains all components of the algorithm for clusters. 
+    Please refer to this file for further information.
+1.2) SOptSC_pseudotime.m --------the M file contains all components of the algorithm for pseudotime 
+    estimation.
+
 2) example.m -------- an example on how to run SOptSC on a specific data.
 3) pca.m     -------- PCA algrotihm from the Matlab Toolbox for Dimensionality reduction: 
                       http://homepage.tudelft.nl/19j49
@@ -17,7 +20,11 @@ The code file mainly includes:
     	start for nonnegative matrix factorization, Pattern Recognition, Elsevier
 
 6) Example data is in file Data
-7) The computation results is saved in file Results.
+7) Plotgenes.m   --------- Plot selected genes specified by users.
+8) newmap.mat    --------- colormap used for plot_genes.
+
+
+9) The computation results is saved in file Results.
 
  
 Please refer to example.m for how to use the code.

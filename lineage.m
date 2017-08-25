@@ -58,10 +58,3 @@ plot(rootedTree,'Markersize',MS,'NodeLabel',cluster_idx); % 'Layout','force','Ed
 set(gca,'xtick',[]); 
 set(gca,'ytick',[]);
 print(4,'-dtiff','Results\Lineage.tiff');
-%Gtree.LineWidth = Tree.Edges.Weight;
-% display(DisM);
-% 
-% disp('============================');
-% disp('Tree predessensor:');
-% fprintf('%d\n',pred);
-% disp('============================');
