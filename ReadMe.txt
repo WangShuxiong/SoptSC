@@ -4,9 +4,9 @@ Requires MATLAB R2015b or later.
 
 This directory includes:
 
-   1) SOptSC.m  -------- this file contains all the components of the algorithm. Please refer
+   1) example.m -------- an example run of SOptSC on a specific dataset (see here for QUICKSTART).
+   2) SOptSC.m  --------  this file contains all the components of the algorithm. Please refer
 	                      to its contents for further information.
-   2) example.m -------- an example on how to run SOptSC on a specific dataset.
    3) pca.m     -------- PCA algrotihm from the Matlab Toolbox for Dimensionality reduction: 
                               http://homepage.tudelft.nl/19j49
    3) symnmf2   -------- non-negative matrix factorization (NMF) tool from:
