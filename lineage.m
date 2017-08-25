@@ -1,18 +1,17 @@
 function [Tree,pred,cluster_center] = lineage(idx,P,root_cell)
-% This function returnes the inferred lineage tree of cell states by SoptSC. 
-% The function will plot lineage tree with correspongding cluster labels.  
+% This function returnes the lineage hierarchy of cell states inferred by SoptSC. 
+% The function will output lineage tree plot with cluster labels.  
 %
-% Inpute
+% Input
 %       idx: cluster labels of all cells
 %       ` P: Transition matrix
 % root_cell: Initial cell speified by user
 %
 % Output
-%          Tree: minimum spanning tree of cluster-to-cluster graph (please refer to minspantree in Matlab)
-%          pred: vector of predecessor nodes (please refer to minspantree in Matlab)
-%cluster_center: cluster center
+%           Tree: minimum spanning tree of cluster-to-cluster graph (please refer to minspantree in Matlab)
+%           pred: vector of predecessor nodes (please refer to minspantree in Matlab)
+% cluster_center: cluster center
 %
-
 
 dvis = pca(P,3);
 cluster_idx = unique(idx,'stable');

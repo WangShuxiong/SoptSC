@@ -1,16 +1,16 @@
 function [P,No_cluster,W,idx,eigenvalues] = Main(nC,data)
-% This function perform the SoptSC algrithm.
+% This is the main function to run SoptSC.
 %
 % Input:
 %          nC: Number of cluster.
-%        data: A m*n matrix with m rows(genes) and n columns(cells).
+%        data: A m*n matrix with m rows (genes) and n columns (cells).
 %
 % Output:
-%           W: Cell-to-cell similarity matrix.
+%           W: Cell-to-cell similarity matrix
 %           P: Transition matrix
 %  No_cluster: Number of cluster computed by SoptSC if nC = [];
-%             otherwise, No_cluster = nC
-%         idx: Cluster label
+%              otherwise, No_cluster = nC
+%         idx: Cluster labels
 % eigenvalues: Eigenvalues of graph Laplacian of the consensus matrix
 %
 %
@@ -38,7 +38,7 @@ end
 [W,P] = SimilarityM(realdata,lambda,K);
 W(W<=eps) = 0;
 
-%% Determinning the number of clusters
+% Determine the number of clusters
 eigenvalues = [];
 if isempty(nC)
     [eigenvalues,No_cluster] = Num_cluster(W);

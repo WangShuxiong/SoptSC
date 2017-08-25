@@ -1,21 +1,22 @@
 function [W,P,No_cluster,cluster_label,cell_order] = SOptSC(data,init_point,NC)
-% SOptSC from single cell data
+% SOptSC: Similarity-based Optimization for Single Cell data
 %
 % Input
 %   -- data:
-%       a m*n single cell data matrix with m rows(genes) and n columns(cells)
+%       a m*n single cell data matrix with m rows (genes) and n columns (cells)
 %   -- init_point:
-%       index of the initial point for pseudotime ordering and cell lineage inference
+%       index of the initial point for pseudotemporal ordering and cell lineage inference
 %   -- NC:
-%       Number of Cluster specified by user, if NC = [] (default), then the algorithm will compute the number.
-%   -- plot: if plot = 1;  plot the result (default).
-%            if plot = 0;  plot of  f.
+%       Number of Cluster specified by user, if NC = [] (default),
+%       then SOptSC will predict the number of clusters.
+%   -- plot: if plot = 1;  plots the result (default).
+%            if plot = 0;  plots off.
 %
 % Output
 %   --  W: Cell-to-cell similarity matrix.
 %   --  P: Transition matrix
 %   --  No_cluster: Number of clusters, if NC is specified by user,
-%       No_cluster = NC; otherwise, the method will compute one.
+%       No_cluster = NC; otherwise, SOptSC will compute NC.
 %   --  cluster_label: cluster labels for all cells.
 %   --  cell_order: cell order inferred by SOptSC
 %
@@ -57,7 +58,8 @@ cmap = colormap;
 mymap = cmap(1:58,:);
 colormap(mymap);
 figure(1);
-scatter(dvis(cell_order,2),dvis(cell_order,3),40,c,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
+%scatter(dvis(cell_order,2),dvis(cell_order,3),40,c,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
+scatter(dvis(cell_order,2),dvis(cell_order,3),40,c,'filled');
 
 box on;
 cb = colorbar;
@@ -73,10 +75,12 @@ set(gca,'ytick',[]);
 set(gca,'FontName','Arial');
 set(gca,'FontSize',12);
 print(1,'-dtiff','Results\pseudotime.tiff');
-%% Subpopulations visualization
+
+%% Visualization of subpopulation structure
 figure(2);
 for ik = 1:No_cluster
-    scatter(dvis(find(idx==ik),2),dvis(find(idx==ik),3),40,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
+    %scatter(dvis(find(idx==ik),2),dvis(find(idx==ik),3),40,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
+    scatter(dvis(find(idx==ik),2),dvis(find(idx==ik),3),40,'filled');
     hold on;
 end
 box on;
@@ -107,14 +111,14 @@ print(2,'-dtiff','Results\subpopulation.tiff');
 root_cell = init_point;
 [Tree,pred,cluster_center] = lineage(idx,P,root_cell);
 
-% display eigen-gap of graph Laplacian
+% Display eigengap of the graph Laplacian
 if isempty(NC)
     figure(3);
     scatter(1:min([30 size(W,1)]),eigenvalues(1:min([30 size(W,1)])),20,'filled');
     box on;
     set(gca,'LineWidth',1.5);
     xlabel('i');
-    ylabel('Eigenvalue of graph Laplacian \lambda_i');
+    ylabel('Eigenvalues of graph Laplacian \lambda_i');
     set(gca,'FontName','Arial');
     set(gca,'FontSize',12);
     print(3,'-dtiff','Results\EigenGap.tiff');
