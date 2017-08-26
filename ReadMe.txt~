@@ -2,10 +2,17 @@ This is a MATLAB implementation of SoptSC, a computational method for single cel
 
 =======
 Requires MATLAB R2015b or later.
-=======
+
 
 This directory includes:
 
+6) Example data is in file Data
+7) Plotgenes.m   --------- Plot selected genes specified by users.
+8) newmap.mat    --------- colormap used for plot_genes.
+
+
+9) The computation results is saved in file Results.
+=======
    1) example.m -------- an example run of SOptSC on a specific dataset (see here for QUICKSTART).
    
    2) SOptSC_cluster.m  --------the M file contains all components of the algorithm for clusters. 
@@ -23,11 +30,8 @@ This directory includes:
    6) NNDSVD    -------- SVD-based initialization for NMF from:
 	                      [2] C. Boutsidis and E. Gallopoulos, SVD-based initialization: A head
     	                      start for nonnegative matrix factorization, Pattern Recognition, Elsevier.
-   7) Plotgenes.m   --------- Plot selected genes specified by users.
-   8) newmap.mat    --------- colormap used for plot_genes.
-
-   9) Example data can be found in Data
-   10) The results are saved in Results
+   7) Example data can be found in Data
+   8) The results are saved in Results
 
 
 Please refer to example.m for instructions on how to use this code.
