@@ -1,6 +1,5 @@
 This is a MATLAB implementation of SoptSC, a computational method for single cell data analysis.
 
-<<<<<<< HEAD
 The code file mainly includes:
 1.1) SOptSC_cluster.m  --------the M file contains all components of the algorithm for clusters. 
     Please refer to this file for further information.
@@ -16,11 +15,10 @@ The code file mainly includes:
             (SDM '12), pp. 106--117.
 =======
 Requires MATLAB R2015b or later.
->>>>>>> 7058b5954aade1b3820a96d9e2308e45f3ab95ef
+
 
 This directory includes:
 
-<<<<<<< HEAD
 6) Example data is in file Data
 7) Plotgenes.m   --------- Plot selected genes specified by users.
 8) newmap.mat    --------- colormap used for plot_genes.
@@ -42,7 +40,6 @@ This directory includes:
     	                      start for nonnegative matrix factorization, Pattern Recognition, Elsevier.
    5) Example data can be found in Data/
    6) The results are saved in Results/
->>>>>>> 7058b5954aade1b3820a96d9e2308e45f3ab95ef
 
 
 Please refer to example.m for instructions on how to use this code.
