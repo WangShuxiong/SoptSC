@@ -10,17 +10,15 @@ addpath('symnmf2');
 load HEE_matrix.mat;
 data = HEE_matrix';
 
-<<<<<<< HEAD
 % Load all gene names as string
 load allgenes.mat;
 
-=======
->>>>>>> 7058b5954aade1b3820a96d9e2308e45f3ab95ef
+
 %% Optional step: preprocess data by selecting a subset of genes
 alpha = 0.5; % Variance in gene expression (threshold)
 beta = 0.5;  % Number of cells in which a gene is expressed
              % (threshold ratio)
-<<<<<<< HEAD
+
 data_processed = processdata(data,alpha,beta);
 
 
@@ -45,12 +43,3 @@ init_cluster = 1;               % Starting cluster specified by user
                                 % based on the analysis from step 2
 cell_order = SOptSC_pseudotime(init_cluster,P,cluster_label,latent,No_cluster);
 
-
-=======
-data = processdata(data,alpha,beta);
-
-%% Run SOptSC
-NC = [];
-init_point = 1;
-[W,P,No_cluster,cluster_label,cell_order] = SOptSC(data,init_point,NC);
->>>>>>> 7058b5954aade1b3820a96d9e2308e45f3ab95ef
