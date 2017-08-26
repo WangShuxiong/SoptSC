@@ -38,7 +38,7 @@ gene_set = {'SALL2','FGFR4'};   % Marker genes selected by user
 plot_genes(gene_set,allgenes,data,latent)
 
 
-%% Run SoptSC to infer pseudotime and lineage tree
+%% Step 3: Run SoptSC to infer pseudotime and lineage tree
 init_cluster = 1;               % Starting cluster specified by user
                                 % based on the analysis from step 2
 cell_order = SOptSC_pseudotime(init_cluster,P,cluster_label,latent,No_cluster);
