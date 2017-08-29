@@ -38,8 +38,9 @@ c = linspace(0,1,size(W1,1));
 colormap parula;
 cmap = colormap;
 mymap = cmap(1:58,:);
-colormap(mymap);
+
 figure(1);
+colormap(mymap);
 scatter(latent(cell_order,2),latent(cell_order,3),40,c,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
 
 box on;
