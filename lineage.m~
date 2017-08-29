@@ -13,17 +13,17 @@ function [Tree,pred,cluster_center] = lineage(idx,P,root_cell)
 % cluster_center: cluster center
 %
 
-DM = 3;
-dvis = pca(P,DM);
-% rng(1);
-% opts.v0 = rand(size(P,1),1);
-% [dvis,~] = eigs(P,DM,'lm',opts);
+DM = 6;
+% dvis = pca(P,DM);
+rng(1);
+opts.v0 = rand(size(P,1),1);
+[dvis,~] = eigs(P,DM,'lm',opts);
 
 cluster_idx = unique(idx,'stable');
 NN = max(idx);
 DisM = zeros(NN);
 
-cluster_center = zeros(DM,NN);
+cluster_center = zeros(3,NN);
 
 for i = 1:NN
     zz = find(idx==cluster_idx(i));

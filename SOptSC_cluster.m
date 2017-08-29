@@ -25,7 +25,10 @@ end
 
 nC = NC;
 [P,No_cluster,W,idx,eigenvalues] = Main(nC,data);
-[dvis,~] = eigs(P);
+
+rng(3);
+opts.v0 = rand(size(P,1),1);
+[dvis,~] = eigs(P,3,'lm',opts);
 
 
 %% Subpopulations visualization

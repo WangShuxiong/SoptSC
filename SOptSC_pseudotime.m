@@ -16,7 +16,12 @@ function cell_order = SOptSC_pseudotime(init_cluster,P,cluster_label,latent,No_c
 nC = No_cluster;
 %[dvis1,~] = eigs((P+P')/2,5);
 % [dvis1,~] = eigs((P+P')/2);
+% rng(1);
+% opts.v0 = rand(size(P,1),1);
+% [dvis1,~] = eigs(P,3,'lm',opts);
+
 dvis1 = pca(P,6);
+
 [~,~,W1,~] = Main(nC,dvis1');
 
 %% Rank-1 NMF
@@ -30,6 +35,7 @@ ZZ = find(cluster_label==init_cluster);
 [~,init_idx] = max(H_all(ZZ));
 
 init_point = ZZ(init_idx);
+
 H1_all = abs(H_all - H_all(init_point));
 [~,cell_order] = sort(H1_all);
 
