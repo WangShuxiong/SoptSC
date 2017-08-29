@@ -35,12 +35,13 @@ H1_all = abs(H_all - H_all(init_point));
 
 % Pseudotime visualization
 c = linspace(0,1,size(W1,1));
-colormap parula;
-cmap = colormap;
-mymap = cmap(1:58,:);
 
-figure(1);
-colormap(mymap);
+% colormap parula;
+% cmap = colormap;
+% colormap_pseudotime = cmap(1:58,:);
+load colormap_pseudotime.mat
+figure(99);
+colormap(colormap_pseudotime);
 scatter(latent(cell_order,2),latent(cell_order,3),40,c,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
 
 box on;
@@ -56,7 +57,7 @@ set(gca,'xtick',[]);
 set(gca,'ytick',[]);
 set(gca,'FontName','Arial');
 set(gca,'FontSize',12);
-print(1,'-dtiff','Results\pseudotime.tiff');
+print(99,'-dtiff','Results\pseudotime.tiff');
 
 % Cell lineage inference
 root_cell = init_point;

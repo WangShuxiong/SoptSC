@@ -29,7 +29,7 @@ nC = NC;
 
 
 %% Subpopulations visualization
-figure(2);
+figure(1);
 for ik = 1:No_cluster
     scatter(dvis(find(idx==ik),2),dvis(find(idx==ik),3),40,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
     hold on;
@@ -56,7 +56,7 @@ legend(lgd,'FontSize',10,'Location','best');%,'Orientation','horizontal');
 set(gca,'FontName','Arial');
 set(gca,'FontSize',12);
 
-print(2,'-dtiff','Results\subpopulation.tiff');
+print(1,'-dtiff','Results\subpopulation.tiff');
 
 
 
