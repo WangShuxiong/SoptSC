@@ -13,7 +13,8 @@ data = HEE_matrix';
 % Load all gene names as string
 load allgenes.mat;
 
-
+% load Test_3_Pollen.mat;
+% data = in_X';
 %% Optional step: preprocess data by selecting a subset of genes
 alpha = 0.5; % Variance in gene expression (threshold)
 beta = 0.5;  % Number of cells in which a gene is expressed
@@ -25,6 +26,9 @@ data_processed = processdata(data,alpha,beta);
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
 NC = [];    % NC is the number of clusters: can be specified by user, or
             % if not given (NC = []), it will be inferred
+% input = in_X;%pca(in_X,30);
+% [W,P,No_cluster,cluster_label,latent] = SOptSC_cluster(input',NC);
+
 [W,P,No_cluster,cluster_label,latent] = SOptSC_cluster(data_processed,NC);
 % Output
 %   --  W: Cell-to-cell similarity matrix.

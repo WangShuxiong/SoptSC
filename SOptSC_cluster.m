@@ -68,9 +68,11 @@ if isempty(NC)
     figure(3);
     scatter(1:min([30 size(W,1)]),eigenvalues(1:min([30 size(W,1)])),20,'filled');
     box on;
-    set(gca,'LineWidth',1.5);
-    xlabel('i');
-    ylabel('Eigenvalue of graph Laplacian \lambda_i');
+%     set(gca,'LineWidth',1.5);
+%     xlabel('i');
+%     ylabel('Eigenvalue of graph Laplacian \lambda_i');
+    set(gca,'ytick',[0 1]);
+    set(gca,'xtick',[]);
     set(gca,'FontName','Arial');
     set(gca,'FontSize',12);
     print(3,'-dtiff','Results\EigenGap.tiff');
