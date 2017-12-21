@@ -1,4 +1,4 @@
-function [P,No_cluster,W,idx,eigenvalues] = Main(nC,data)
+function [P,No_cluster,W,idx,eigenvalues,H] = Main(nC,data)
 % This is the main function to run SoptSC.
 %
 % Input:
@@ -52,7 +52,7 @@ flag = 1;
 params.tol = 10^(-6);
 params.Hinit = chuzhiA;
 [HH,~,~] = symnmf_newton(W, nC, params);
-
+H = HH;
 [~,idx] = max(HH,[],2);
 No_cluster  = nC;
 end
