@@ -1,4 +1,4 @@
-function [W,P,No_cluster,cluster_label,latent] = SOptSC_cluster(data,NC)
+function [W,P,No_cluster,cluster_label,latent,H] = SOptSC_cluster(data,NC)
 % SOptSC identifies clusters from single cell data
 %
 % Input
@@ -24,7 +24,7 @@ end
 
 
 nC = NC;
-[P,No_cluster,W,idx,eigenvalues] = Main(nC,data);
+[P,No_cluster,W,idx,eigenvalues,H] = Main(nC,data);
 
 rng(3);
 opts.v0 = rand(size(P,1),1);
