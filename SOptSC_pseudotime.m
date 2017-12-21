@@ -20,7 +20,7 @@ nC = No_cluster;
 % opts.v0 = rand(size(P,1),1);
 % [dvis1,~] = eigs(P,3,'lm',opts);
 
-dvis1 = pca(P,6);
+dvis1 = pca(P,3);
 
 [~,~,W1,~] = Main(nC,dvis1');
 
