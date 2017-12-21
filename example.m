@@ -29,20 +29,25 @@ NC = [];    % NC is the number of clusters: can be specified by user, or
 % input = in_X;%pca(in_X,30);
 % [W,P,No_cluster,cluster_label,latent] = SOptSC_cluster(input',NC);
 
-[W,P,No_cluster,cluster_label,latent] = SOptSC_cluster(data_processed,NC);
+[W,P,No_cluster,cluster_label,latent,H] = SOptSC_cluster(data_processed,NC);
 % Output
 %   --  W: Cell-to-cell similarity matrix.
-%   --  P: Transition matrix
-%   --  No_cluster: Number of clusters
+%   --  P: Transition matrix.
+%   --  No_cluster: Number of clusters.
 %   --  cluster_label: cluster labels for all cells.
-%   --  latent: low dimensional space (first three eigenvectors) of transition matrix P
+%   --  H: decomposed matrix for W.
+%   --  latent: low dimensional space (first three eigenvectors) of
+%   transition matrix P.
 
 %% Step 2: Plot gene expression to compare with clusters
 gene_set = {'SALL2','FGFR4'};   % Marker genes selected by user
 plot_genes(gene_set,allgenes,data,latent)
 
+%% Step 3: Plot gene-cell heatmap
 
-%% Step 3: Run SoptSC to infer pseudotime and lineage tree
+topn = 20;
+Gene_labels = GC_heatmapTopn(data_processed,cluster_label,H,allgenes,gene_idx,topn);
+%% Step 4: Run SoptSC to infer pseudotime and lineage tree
 init_cluster = 1;               % Starting cluster specified by user
                                 % based on the analysis from step 2
 cell_order = SOptSC_pseudotime(init_cluster,P,cluster_label,latent,No_cluster);
