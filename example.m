@@ -45,7 +45,7 @@ plot_genes(gene_set,allgenes,data,latent)
 
 %% Step 3: Plot gene-cell heatmap
 
-topn = 20;
+topn = 20;  % Number of top genes selected for each cluster to plot.
 Gene_labels = GC_heatmapTopn(data_processed,cluster_label,H,allgenes,select_genes,topn);
 %% Step 4: Run SoptSC to infer pseudotime and lineage tree
 init_cluster = 2;               % Starting cluster specified by user
