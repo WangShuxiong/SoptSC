@@ -26,7 +26,7 @@ beta = 0.5;  % Number of cells in which a gene is expressed
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
 NC = [];    % NC is the number of clusters: can be specified by user, or
             % if not given (NC = []), it will be inferred
-% input = in_X;%pca(in_X,30);
+
 % [W,P,No_cluster,cluster_label,latent] = SOptSC_cluster(input',NC);
 
 [W,P,No_cluster,cluster_label,latent,H] = SOptSC_cluster(data_processed,NC);
