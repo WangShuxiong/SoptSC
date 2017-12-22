@@ -97,38 +97,32 @@ set(gca,'ytick',[]);
 
 yticks(1:length(OGI));
 yticklabels(allgenes(OGI));
-% xticks(1:length(CGI));
-% xticklabels(CGI);
 
-% cb = colorbar;
-% ax = gca;
-% axpos = ax.Position;
-% cpos = cb.Position;
-% cpos(3) = 0.5*cpos(3);
-% cb.Position = cpos;
-% ax.Position = axpos;
+for i = 1:NC
+    if i<10
+        vv = 'ClusterC';
+        vv(8:8) = num2str(i);
+        lgd{i} = vv;
+    else
+        vv = 'ClusterCC';
+        vv(8:9) = num2str(i);
+        lgd{i} = vv;
+    end
+end
 
 
-% % 
-% % hold on;
-% % a = get(gca,'Xlim');
-% % b = get(gca,'Ylim');
-% % 
-% % axis([a(1) a(2) b(1) b(2)+1]);
-% % 
-% % 
-% % for i = 1:NC
-% %     bili(i) = length(find(cluster_label ==i));
-% % end
-% % bili = bili./sum(bili);
-% % bili = cumsum(bili);
-% % 
-% % xpoint = a(1) + (a(2)-a(1)).*bili;
-% % ypoint = b(2)+1;
-% % 
-% % point = [xpoint; ypoint.*ones(size(xpoint))];
-% % 
-% % for i = 1:NC-1
-% %     line(point(:,i),point(:,i+1),'Color','r');
-% %     hold on;
-% % end
+xticks_position = zeros(1,NC);
+No_cell_cluster = zeros(1,NC);
+zz = 0;
+for i = 1:NC
+    No_cell_cluster(i) = length(find(cluster_label==i));
+    if i==1
+        xticks_position(i) = round(0.5*No_cell_cluster(i));
+    else
+        xticks_position(i) = zz + round(0.5*No_cell_cluster(i));
+    end
+    zz = zz + No_cell_cluster(i);
+end
+
+xticks(xticks_position);
+xticklabels(lgd);
