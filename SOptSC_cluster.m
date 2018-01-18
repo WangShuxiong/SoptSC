@@ -1,4 +1,4 @@
-function [W,P,No_cluster,cluster_label,latent] = SOptSC_cluster(data,NC)
+function [W,P,No_cluster,cluster_label,latent,H] = SOptSC_cluster(data,NC)
 % SOptSC identifies clusters from single cell data
 %
 % Input
@@ -24,12 +24,15 @@ end
 
 
 nC = NC;
-[P,No_cluster,W,idx,eigenvalues] = Main(nC,data);
-[dvis,~] = eigs(P);
+[P,No_cluster,W,idx,eigenvalues,H] = Main(nC,data);
+
+rng(3);
+opts.v0 = rand(size(P,1),1);
+[dvis,~] = eigs(P,3,'lm',opts);
 
 
 %% Subpopulations visualization
-figure(2);
+figure(1);
 for ik = 1:No_cluster
     scatter(dvis(find(idx==ik),2),dvis(find(idx==ik),3),40,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
     hold on;
@@ -56,7 +59,7 @@ legend(lgd,'FontSize',10,'Location','best');%,'Orientation','horizontal');
 set(gca,'FontName','Arial');
 set(gca,'FontSize',12);
 
-print(2,'-dtiff','Results\subpopulation.tiff');
+print(1,'-dtiff','Results\subpopulation.tiff');
 
 
 
@@ -65,9 +68,11 @@ if isempty(NC)
     figure(3);
     scatter(1:min([30 size(W,1)]),eigenvalues(1:min([30 size(W,1)])),20,'filled');
     box on;
-    set(gca,'LineWidth',1.5);
-    xlabel('i');
-    ylabel('Eigenvalue of graph Laplacian \lambda_i');
+%     set(gca,'LineWidth',1.5);
+%     xlabel('i');
+%     ylabel('Eigenvalue of graph Laplacian \lambda_i');
+    set(gca,'ytick',[0 1]);
+    set(gca,'xtick',[]);
     set(gca,'FontName','Arial');
     set(gca,'FontSize',12);
     print(3,'-dtiff','Results\EigenGap.tiff');

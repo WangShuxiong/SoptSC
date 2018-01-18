@@ -16,7 +16,12 @@ function cell_order = SOptSC_pseudotime(init_cluster,P,cluster_label,latent,No_c
 nC = No_cluster;
 %[dvis1,~] = eigs((P+P')/2,5);
 % [dvis1,~] = eigs((P+P')/2);
-dvis1 = pca(P,6);
+% rng(1);
+% opts.v0 = rand(size(P,1),1);
+% [dvis1,~] = eigs(P,3,'lm',opts);
+
+dvis1 = pca(P,3);
+
 [~,~,W1,~] = Main(nC,dvis1');
 
 %% Rank-1 NMF
@@ -30,16 +35,19 @@ ZZ = find(cluster_label==init_cluster);
 [~,init_idx] = max(H_all(ZZ));
 
 init_point = ZZ(init_idx);
+
 H1_all = abs(H_all - H_all(init_point));
 [~,cell_order] = sort(H1_all);
 
 % Pseudotime visualization
 c = linspace(0,1,size(W1,1));
-colormap parula;
-cmap = colormap;
-mymap = cmap(1:58,:);
-colormap(mymap);
-figure(1);
+
+% colormap parula;
+% cmap = colormap;
+% colormap_pseudotime = cmap(1:58,:);
+load colormap_pseudotime.mat
+figure(99);
+colormap(colormap_pseudotime);
 scatter(latent(cell_order,2),latent(cell_order,3),40,c,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
 
 box on;
@@ -55,7 +63,7 @@ set(gca,'xtick',[]);
 set(gca,'ytick',[]);
 set(gca,'FontName','Arial');
 set(gca,'FontSize',12);
-print(1,'-dtiff','Results\pseudotime.tiff');
+print(99,'-dtiff','Results\pseudotime.tiff');
 
 % Cell lineage inference
 root_cell = init_point;

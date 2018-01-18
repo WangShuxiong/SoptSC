@@ -13,12 +13,17 @@ function [Tree,pred,cluster_center] = lineage(idx,P,root_cell)
 % cluster_center: cluster center
 %
 
-dvis = pca(P,3);
+DM = 3;
+dvis = pca(P,DM);
+% rng(1);
+% opts.v0 = rand(size(P,1),1);
+% [dvis,~] = eigs(P,DM,'lm',opts);
+
 cluster_idx = unique(idx,'stable');
 NN = max(idx);
 DisM = zeros(NN);
 
-cluster_center = zeros(3,NN);
+cluster_center = zeros(DM,NN);
 
 for i = 1:NN
     zz = find(idx==cluster_idx(i));
@@ -50,10 +55,10 @@ rootedTree = digraph(pred(pred~=0),find(pred~=0));
 % eLabels = Tree.Edges.Weight;
 % nLabels = ;
 MS = 10*ones(NN,1);
-figure(4);
+figure(100);
 % Gtree = plot(rootedTree,'EdgeLabel',eLabels,'Markersize',MS); % 'Layout','force','EdgeLabel',eLabels,'NodeLabel',nLabels
 plot(rootedTree,'Markersize',MS,'NodeLabel',cluster_idx); % 'Layout','force','EdgeLabel',eLabels,'NodeLabel',nLabels
 
 set(gca,'xtick',[]); 
 set(gca,'ytick',[]);
-print(4,'-dtiff','Results\Lineage.tiff');
+print(100,'-dtiff','Results\Lineage.tiff');

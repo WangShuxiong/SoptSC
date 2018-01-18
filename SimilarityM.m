@@ -85,8 +85,10 @@ while 1
     Y1 = Y1 + mu*(X-X*Z-E);
     Y2 = Y2 + mu*(ones(1,n) - ones(1,n)*Z);
     Y3 = Y3 + mu*(Z - J);
-    
-    fprintf('%d, %8.6f, %8.6f\n',iter,norm(X-X*Z-E),norm(Z-J));
+    if iter==1
+    display('Iter Err');
+    end
+    fprintf('%d, %8.6f\n',iter,norm(X-X*Z-E));
     Err(iter,:) = [norm(X-X*Z-E) norm(Z-J)];
     
     if max(Err(iter,:)) <= epsilon

@@ -1,4 +1,4 @@
-function newdata = processdata(data,alpha,beta)
+function [gene_sel_idx, newdata] = processdata(data,alpha,beta)
 % This function preprocesses single cell data
 % by selecting a subset of genes based on
 %   1) the variance of each gene, tolerance is alpha 
