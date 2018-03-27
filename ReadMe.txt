@@ -1,4 +1,13 @@
-This is a MATLAB implementation of SoptSC, a computational method for single cell data analysis.
+This is a MATLAB implementation of SoptSC, a computational method for single cell data analysis. More specifically, SoptSC can
+
+	1. Identify the number of clusters from the input data.
+	2. Identify cell subpopulations.
+	3. Identify marker genes for each cell subpopulation.
+	4. Infer pseudotime (temporal ordering of cells) in an unsupervised manner.
+	5. Infer lineage in an unsupervised manner. 
+	6. Infer signaling network given a group of Ligand-Receptor pairs and
+	   their downstream target genes (to be updated).
+
 
 =======
 Requires MATLAB R2015b or later.
