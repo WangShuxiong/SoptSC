@@ -12,6 +12,7 @@ This is a MATLAB implementation of SoptSC, a computational method for single cel
 =======
 Requires MATLAB R2015b or later.
 =======
+Please refer to each M file for more detailed descriptions of the corresponding function.
 
 This directory includes:
 
@@ -20,11 +21,10 @@ This directory includes:
    2) SOptSC_cluster.m  --------the M file contains all components of the algorithm for clusters. 
     Please refer to this file for further information.
    
-   3) SOptSC_pseudotime.m --------the M file contains all components of the algorithm for pseudotime 
-    estimation.
-   
-   4) pca.m     -------- PCA algrotihm from the Matlab Toolbox for Dimensionality reduction: 
-                              http://homepage.tudelft.nl/19j49
+   3) Lineage_Ptime.m --------the M file contains all components of the algorithm for pseudotime and lineage inference.
+  
+   4) pca1.m     -------- PCA algrotihm from the Matlab Toolbox for Dimensionality reduction.
+ 
    5) symnmf2   -------- non-negative matrix factorization (NMF) tool from:
 	                      [1] Da Kuang, Chris Ding, Haesun Park, Symmetric Nonnegative Matrix
 			      Factorization for Graph Clustering, The 12th SIAM International Conference
