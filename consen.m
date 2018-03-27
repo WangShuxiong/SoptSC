@@ -4,14 +4,15 @@ flag = 1;
 n = size(S,1);
 
 M_all = zeros(size(S));
+[LS,~] = pca1(S,3);
 for i = 1:length(idx)
-    [chuzhiA,~] = nndsvd(S,i,flag);
-    params.tol = 10^(-6);
-    params.Hinit = chuzhiA;
-    
-    [H_all,~,~] = symnmf_newton(S,i,params);
-    [~,indx] = max(H_all, [], 2);
-%     display(max(indx));
+%     [chuzhiA,~] = nndsvd(S,i,flag);
+%     params.tol = 10^(-6);
+%     params.Hinit = chuzhiA;
+%     
+%     [H_all,~,~] = symnmf_newton(S,i,params);
+%     [~,indx] = max(H_all, [], 2);
+    indx = kmeans(LS,i,'Start',zeros(i,3));
     M = consen(indx);
     M_all = M_all + M;
 end
@@ -31,7 +32,6 @@ else
     all_eigs = real(eig(Prw));
 end
 
-% all_eigs = eig(M_all);
     function M = consen(indx)
         
         % [m,~] = size(S);
