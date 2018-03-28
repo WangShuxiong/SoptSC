@@ -5,14 +5,19 @@ function Gene_labels = GC_heatmapTopn(data,cluster_label,H,allgenes,gene_idx,top
 %       data: gene-cell matrix
 %       cluster_label: cluster labels for all cells
 %       H: non-negative matrix such that W = H*H^T
-%
+%       allgenes: gene annotations
+%       gene_idx: Candidate marker gene indices.
+%       topn: Number of markers selected for each cluster
+
 %   Output:
 %       Gene_labels: gene label information for each gene associated with a specific
 %       cluster, the first columns of Gene_labels represents gene indices;
 %       the second column of Gene_labels represents the cluster index that 
 %       the gene belongs to; the third column represent gene score associated
 %       with corresponding cluster.
-Dataplot = data;
+
+data = data(gene_idx,:);
+
 
 NC = max(cluster_label);
 m = size(data,1);
@@ -20,15 +25,15 @@ Gene_labels = zeros(m,3);
 
 Gene_labels(:,1) = gene_idx;
 
-
 %% data normalization
 for i = 1:size(data,2)
-    data(:,i) = data(:,i)./norm(data(:,i),2);
+    data(:,i) = data(:,i)./norm(data(:,i),1);
 end
 
 
-
+%%
 G_latent = data*H;
+
 [Gene_value,Gene_label] = max(G_latent,[],2);
 
 Gene_labels(:,2) = Gene_label;
@@ -40,6 +45,8 @@ OGV = [];
 
 CGI = [];
 topn1 = topn;
+gene_id = [];
+cell_id = [];
 for i = 1:NC
     % order genes within each cluster
     Z = find(Gene_label==i);
@@ -51,6 +58,9 @@ for i = 1:NC
     end
     
     display(topn1);
+    
+    gene_id = [gene_id; i.*ones(topn1,1)];
+    cell_id = [cell_id; i.*ones(length(find(cluster_label==i)),1)];
     Z2 = Z(I(1:topn1));
     OGI = [OGI; Z2];
     OGV = [OGV; Z1V(1:topn1)];
@@ -77,7 +87,7 @@ end
 %% data normalization and zscroe
 % kk = 1 row; kk = 2 column
 figure;
-idata = Dataplot(OGI,CGI);
+idata = data(OGI,CGI);
 kk = 2;
 center = mean(idata,kk);
 scale = std(idata, 0,kk);
@@ -89,40 +99,49 @@ scale(tscale == 0) = 1;
 idata = bsxfun(@minus, idata, center);
 sdata = bsxfun(@rdivide, idata, scale);
 
+thresh = 4;
 colormap redbluecmap;
-clims = [-3 3];
+clims = [-thresh thresh];
 imagesc(sdata,clims);
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
 
 yticks(1:length(OGI));
-yticklabels(allgenes(OGI));
+yticklabels(allgenes(gene_idx(OGI)));
 
-for i = 1:NC
-    if i<10
-        vv = 'ClusterC';
-        vv(8:8) = num2str(i);
-        lgd{i} = vv;
-    else
-        vv = 'ClusterCC';
-        vv(8:9) = num2str(i);
-        lgd{i} = vv;
-    end
-end
+cb = colorbar;
+ax = gca;
+axpos = ax.Position;
+cpos = cb.Position;
+cpos(3) = 0.5*cpos(3);
+cb.Position = cpos;
+ax.Position = axpos;
 
 
-xticks_position = zeros(1,NC);
-No_cell_cluster = zeros(1,NC);
-zz = 0;
-for i = 1:NC
-    No_cell_cluster(i) = length(find(cluster_label==i));
-    if i==1
-        xticks_position(i) = round(0.5*No_cell_cluster(i));
-    else
-        xticks_position(i) = zz + round(0.5*No_cell_cluster(i));
-    end
-    zz = zz + No_cell_cluster(i);
-end
 
-xticks(xticks_position);
-xticklabels(lgd);
+%% Creat table
+% T = table(allgenes(gene_idx(OGI)),Gene_label(OGI),'VariableNames',{'Gene_Name','Cluster'});
+% writetable(T,'Markers_ds5.csv');
+
+% % hold on;
+% % a = get(gca,'Xlim');
+% % b = get(gca,'Ylim');
+% % 
+% % axis([a(1) a(2) b(1) b(2)+1]);
+% % 
+% % 
+% % for i = 1:NC
+% %     bili(i) = length(find(cluster_label ==i));
+% % end
+% % bili = bili./sum(bili);
+% % bili = cumsum(bili);
+% % 
+% % xpoint = a(1) + (a(2)-a(1)).*bili;
+% % ypoint = b(2)+1;
+% % 
+% % point = [xpoint; ypoint.*ones(size(xpoint))];
+% % 
+% % for i = 1:NC-1
+% %     line(point(:,i),point(:,i+1),'Color','r');
+% %     hold on;
+% % end
