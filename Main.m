@@ -1,26 +1,22 @@
-function [P,No_cluster,W,idx,eigenvalues,H] = Main(nC,data)
-% This is the main function to run SoptSC.
+function [No_cluster,W,idx,eigenvalues,H] = Main(nC,data)
+% This function perform the SoptSC algrithm.
 %
 % Input:
 %          nC: Number of cluster.
-%        data: A m*n matrix with m rows (genes) and n columns (cells).
+%        data: A m*n matrix with m rows(genes) and n columns(cells).
 %
 % Output:
-%           W: Cell-to-cell similarity matrix
+%           W: Cell-to-cell similarity matrix.
 %           P: Transition matrix
 %  No_cluster: Number of cluster computed by SoptSC if nC = [];
-%              otherwise, No_cluster = nC
-%         idx: Cluster labels
+%             otherwise, No_cluster = nC
+%         idx: Cluster label
 % eigenvalues: Eigenvalues of graph Laplacian of the consensus matrix
-%
-%
+%           H: Non-negative matrix such that W = H*H^T
 
-
-alpha = 0.2;
 realdata = data;
 realdata = realdata-min(realdata(:));
 realdata = realdata./max(realdata(:));
-
 
 [~,n] = size(realdata);
 for i = 1:n
@@ -28,31 +24,37 @@ for i = 1:n
 end
 
 lambda = 0.5;
-K = ceil(alpha*n);
-if K<=10
-    K = 10;
-elseif K >= 20
-    K = 20;
-end
 
-[W,P] = SimilarityM(realdata,lambda,K);
-W(W<=eps) = 0;
+W = SimilarityM(realdata,lambda,data);
 
-% Determine the number of clusters
+    WB = W;
+    n = size(W,1);
+    D = diag(WB*ones(n,1));
+    Prw = eye(size(W)) - D^(-1/2)*WB*D^(-1/2);
+    if n>=1000
+        No_eigs = 100;
+        all_eigs = real(eigs(Prw,No_eigs,'sm'));
+    else
+        all_eigs = real(eig(Prw));
+    end
+    
+    ZZ = sort(abs(real(all_eigs)));        
+    No_cluster1 = length(find(ZZ<=0.01));
+    display(No_cluster1);
+    
+%% Determinning the number of clusters
 eigenvalues = [];
 if isempty(nC)
-    [eigenvalues,No_cluster] = Num_cluster(W);
+    [eigenvalues,No_cluster] = Num_cluster(W,No_cluster1);
     nC = No_cluster;
 end
 
-% [decomW,~] = eigs(W,nC);
-% params.Hinit = 2*full(sqrt(mean(mean(W))/nC))*decomW;
+
 flag = 1;
 [chuzhiA,~] = nndsvd(W,nC,flag);
 params.tol = 10^(-6);
 params.Hinit = chuzhiA;
-[HH,~,~] = symnmf_newton(W, nC, params);
-H = HH;
-[~,idx] = max(HH,[],2);
+[H,~,~] = symnmf_newton(W, nC, params);
+[~,idx] = max(H,[],2);
 No_cluster  = nC;
 end

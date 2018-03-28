@@ -1,8 +1,19 @@
-This is a MATLAB implementation of SoptSC, a computational method for single cell data analysis.
+This is a MATLAB implementation of SoptSC, a computational method for single cell data analysis. More specifically, SoptSC can
+
+	1. Identify the number of clusters from the input data.
+	2. Identify cell subpopulations.
+	3. Identify marker genes for each cell subpopulation.
+	4. Infer pseudotime (temporal ordering of cells) in an unsupervised manner: i.e., initial cell is not required.
+	5. Infer lineage in an unsupervised manner: i.e., initial cluster is 
+not required. 
+	6. Infer signaling network given a group of Ligand-Receptor pairs and
+	   their downstream target genes (to be updated).
+
 
 =======
 Requires MATLAB R2015b or later.
 =======
+Please refer to each M file for more detailed descriptions of the corresponding function.
 
 This directory includes:
 
@@ -11,11 +22,10 @@ This directory includes:
    2) SOptSC_cluster.m  --------the M file contains all components of the algorithm for clusters. 
     Please refer to this file for further information.
    
-   3) SOptSC_pseudotime.m --------the M file contains all components of the algorithm for pseudotime 
-    estimation.
-   
-   4) pca.m     -------- PCA algrotihm from the Matlab Toolbox for Dimensionality reduction: 
-                              http://homepage.tudelft.nl/19j49
+   3) Lineage_Ptime.m --------the M file contains all components of the algorithm for pseudotime and lineage inference.
+  
+   4) pca1.m     -------- PCA algrotihm from the Matlab Toolbox for Dimensionality reduction.
+ 
    5) symnmf2   -------- non-negative matrix factorization (NMF) tool from:
 	                      [1] Da Kuang, Chris Ding, Haesun Park, Symmetric Nonnegative Matrix
 			      Factorization for Graph Clustering, The 12th SIAM International Conference

@@ -36,7 +36,7 @@ mymap = newmap;
 for ik = 1:gene_set_no
     figure;
     colormap(mymap);
-    scatter(latent(:,2),latent(:,3),20,MM(ik,:),'filled','MarkerEdgeAlpha',0.8,'MarkerFaceAlpha',0.8);
+    scatter(latent(:,1),latent(:,2),20,MM(ik,:),'filled','MarkerEdgeAlpha',0.8,'MarkerFaceAlpha',0.8);
     title(gene_set{ik});
     box on;
     set(gca,'LineWidth',1.5);
