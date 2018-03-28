@@ -3,8 +3,9 @@ This is a MATLAB implementation of SoptSC, a computational method for single cel
 	1. Identify the number of clusters from the input data.
 	2. Identify cell subpopulations.
 	3. Identify marker genes for each cell subpopulation.
-	4. Infer pseudotime (temporal ordering of cells) in an unsupervised manner: 	i.e., initial cell is not required.
-	5. Infer lineage in an unsupervised manner: i.e., initial cluster is not 	required. 
+	4. Infer pseudotime (temporal ordering of cells) in an unsupervised manner: i.e., initial cell is not required.
+	5. Infer lineage in an unsupervised manner: i.e., initial cluster is 
+not required. 
 	6. Infer signaling network given a group of Ligand-Receptor pairs and
 	   their downstream target genes (to be updated).
 
