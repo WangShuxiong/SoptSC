@@ -2,7 +2,6 @@
 clear;
 clc;
 echo on;
-addpath('drtoolbox');
 addpath('Data');
 addpath('NNDSVD');
 addpath('symnmf2');
