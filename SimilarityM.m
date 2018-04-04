@@ -18,21 +18,11 @@ function W = SimilarityM(X,lambda,data)
 
 
 [m,n] = size(X);
-% KNN Search for finding nearest neighbors
-% if m>=60
-%     [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',60);
-% else
-%     [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',m);
-% end
-
 covx = cov(X');
-pca_eigvalue1 = eig(covx);
+pca_eigvalue1 = sort(eig(covx),'descend');
 [~,No_Comps1] = max(abs(pca_eigvalue1(2:end-1) - pca_eigvalue1(3:end)));
 
 display(sum(pca_eigvalue1(1:No_Comps1+1))./sum(pca_eigvalue1))
-
-% figure(10);
-% bar(pca_eigvalue1);
 
 display(No_Comps1);
 
@@ -40,7 +30,7 @@ cc = cumsum(pca_eigvalue1(2:end));
 dd = cc(2:end)./sum(pca_eigvalue1(2:end));
 
 K1 = length(find(dd<=0.3));
-display(K1);
+% display(K1);
 
 if K1 <= 10
     K = 10;
@@ -59,6 +49,8 @@ D = ones(n,n);
 if No_Comps1>=1
     No_Comps1 = 1;
 end
+
+No_Comps1 = 1;
 [IDX,~] = knnsearch(X2(:,1:No_Comps1+2),X2(:,1:No_Comps1+2),'k',K);
 
 for jj = 1:n
@@ -139,25 +131,3 @@ W = 0.5.*(abs(Z)+abs(Z'));
         end
     end
 end
-% function W = Network_Diffusion(A, K)
-% %K = min(2*K, round(length(A)/10));
-% A = A-diag(diag(A));
-% P = (dominateset(double(abs(A)),min(K,length(A)-1))).*sign(A);
-% DD = sum(abs(P'));
-% P = P + (eye(length(P))+diag(sum(abs(P'))));
-% P = (TransitionFields(P));
-% [U,D] = eig(P);
-% d = real((diag(D))+eps);
-% alpha = 0.8;
-% beta = 2;
-% d = (1-alpha)*d./(1-alpha*d.^beta);
-%
-%
-% D = diag(real(d));
-% W = U*D*U';
-%
-% W = (W.*(1-eye(length(W))))./repmat(1-diag(W),1,length(W));
-% D=sparse(1:length(DD),1:length(DD),DD);
-% W=D*(W);
-% W = (W+W')/2;
-% end
