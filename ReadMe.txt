@@ -11,7 +11,9 @@ not required.
 
 
 =======
-Requires MATLAB R2015b or later.
+Requires: 
+1. MATLAB R2015b or later.
+2. Install drtoolbox by following ReadMe.txt in drtoolbox folder
 =======
 Please refer to each M file for more detailed descriptions of the corresponding function.
 
