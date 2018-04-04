@@ -4,7 +4,7 @@ flag = 1;
 n = size(S,1);
 
 M_all = zeros(size(S));
-[LS,~] = pca1(S,3);
+LS = pca1(S,3);
 for i = 1:length(idx)
 %     [chuzhiA,~] = nndsvd(S,i,flag);
 %     params.tol = 10^(-6);
