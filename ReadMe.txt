@@ -35,9 +35,10 @@ This directory includes:
     	                      start for nonnegative matrix factorization, Pattern Recognition, Elsevier.
    7) Plotgenes.m   --------- Plot selected genes specified by users.
    8) newmap.mat    --------- colormap used for plot_genes.
+   9) drtoolbox     ————————— Dimension reduction toolbox from https://lvdmaaten.github.io/drtoolbox/
 
-   9) Example data can be found in Data
-   10) The results are saved in Results
+   10) Example data can be found in Data
+   11) The results are saved in Results
 
 
 Please refer to example.m for instructions on how to use this code.
