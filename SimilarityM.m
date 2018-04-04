@@ -19,12 +19,14 @@ function W = SimilarityM(X,lambda,data)
 
 [m,n] = size(X);
 % KNN Search for finding nearest neighbors
-if m>=60
-    [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',60);
-else
-    [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',m);
-end
+% if m>=60
+%     [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',60);
+% else
+%     [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',m);
+% end
 
+covx = cov(X');
+pca_eigvalue1 = eig(covx);
 [~,No_Comps1] = max(abs(pca_eigvalue1(2:end-1) - pca_eigvalue1(3:end)));
 
 display(sum(pca_eigvalue1(1:No_Comps1+1))./sum(pca_eigvalue1))
