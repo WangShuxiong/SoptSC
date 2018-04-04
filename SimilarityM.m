@@ -47,7 +47,7 @@ else
 end
 InitY = pca1(data',3);
 X2 = tsne(X','Standardize',true,'Perplexity',20,'NumDimensions',3,'InitialY',InitY);
-% X2 = tsne(X','Standardize',true,'Perplexity',20,'NumDimensions',3);
+% X2 = tsne(X', [], InitY, [], 20);
 
 display(K);
 
