@@ -19,9 +19,9 @@ function W = SimilarityM(X,lambda,data)
 
 [m,n] = size(X);
 if m>=60
-    [coeff1,X1,pca_eigvalue1] = pca_matlab(X','NumComponents',60);
+    [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',60);
 else
-    [coeff1,X1,pca_eigvalue1] = pca_matlab(X','NumComponents',m);
+    [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',m);
 end
 
 % covx = cov(X');
