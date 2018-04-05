@@ -2,12 +2,17 @@
 clear;
 clc;
 echo on;
+
 addpath('Data');
 addpath('NNDSVD');
 addpath('symnmf2');
 
 % Load data
 load Guo2010.mat;
+
+% To save results 
+ResFolder = strcat('Results_',string(datetime('now','Format','yyyyMMdd_HHmm')));
+mkdir(ResFolder);
 
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
 NC = [];    
