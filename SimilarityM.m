@@ -19,9 +19,9 @@ function W = SimilarityM(X,lambda,data)
 
 [m,n] = size(X);
 if m>=60
-    [coeff1,X1,pca_eigvalue1] = pca_matlab(X','NumComponents',60);
+    [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',60);
 else
-    [coeff1,X1,pca_eigvalue1] = pca_matlab(X','NumComponents',m);
+    [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',m);
 end
 
 % covx = cov(X');
@@ -47,7 +47,7 @@ else
 end
 InitY = pca1(data',3);
 X2 = tsne(X','Standardize',true,'Perplexity',20,'NumDimensions',3,'InitialY',InitY);
-% X2 = tsne(X','Standardize',true,'Perplexity',20,'NumDimensions',3);
+% X2 = tsne(X', [], InitY, [], 20);
 
 display(K);
 

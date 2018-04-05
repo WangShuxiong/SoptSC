@@ -53,7 +53,7 @@ end
 
 data1 = data(G_filter_idx,:);
 
-[coeff, ~, pca_eigvalue] = pca_matlab(data1');
+[coeff, ~, pca_eigvalue] = pca(data1');
 [~,No_Comps] = max(abs(pca_eigvalue(2:end-1) - pca_eigvalue(3:end)));
 display(No_Comps);
 

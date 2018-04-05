@@ -12,8 +12,11 @@ not required.
 
 =======
 Requires: 
-1. MATLAB R2015b or later.
-2. Install drtoolbox by following ReadMe.txt in drtoolbox folder
+MATLAB R2017b or later (where function tSNE is included)
+
+or Update the Statistics and Machine Learning Toolbox such that the function
+tSNE (t-Distributed Stochastic Neighbor Embedding) is included.
+
 =======
 Please refer to each M file for more detailed descriptions of the corresponding function.
 
@@ -37,10 +40,9 @@ This directory includes:
     	                      start for nonnegative matrix factorization, Pattern Recognition, Elsevier.
    7) Plotgenes.m   --------- Plot selected genes specified by users.
    8) newmap.mat    --------- colormap used for plot_genes.
-   9) drtoolbox     ————————— Dimension reduction toolbox from https://lvdmaaten.github.io/drtoolbox/
-
-   10) Example data can be found in Data
-   11) The results are saved in Results
+   
+   9) Example data can be found in Data
+   10) The results are saved in Results
 
 
 Please refer to example.m for instructions on how to use this code.
