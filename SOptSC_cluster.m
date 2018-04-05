@@ -1,4 +1,4 @@
-function [W,No_cluster,cluster_label,latent,H,Gene_sel_idx] = SOptSC_cluster(data,NC,No_exc_cell,No_features)
+function [W,No_cluster,cluster_label,latent,H,Gene_sel_idx] = SOptSC_cluster(data,NC,No_exc_cell,No_features,ResFolder)
 % G_filter_idx
 % SOptSC identifies clusters from single cell data
 %

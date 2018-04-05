@@ -18,7 +18,7 @@ mkdir(ResFolder);
 NC = [];    
 No_exc_cell = 0;
 No_features = 2000;
-[W,No_cluster,cluster_label,latent,H,Gene_sel_idx] = SOptSC_cluster(data,NC,No_exc_cell,No_features);
+[W,No_cluster,cluster_label,latent,H,Gene_sel_idx] = SOptSC_cluster(data,NC,No_exc_cell,No_features,ResFolder);
 
 %% Pseudotime and lineage inference
 root_cluster = 0;
