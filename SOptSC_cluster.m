@@ -1,4 +1,4 @@
-function [W,No_cluster,cluster_label,latent,H,Gene_sel_idx] = SOptSC_cluster(data,NC,No_exc_cell,No_features,ResFolder)
+function [W,No_cluster,cluster_label,latent,H,Gene_sel_idx] = SOptSC_cluster(data,NC,No_exc_cell,No_features)
 % G_filter_idx
 % SOptSC identifies clusters from single cell data
 %
@@ -111,8 +111,9 @@ if switch1==1
     set(gca,'FontName','Arial');
     set(gca,'FontSize',12);
     
-    print(1,'-dtiff', strcat(ResFolder,'/Subpopulation.tiff'));
-     
+%     print(1,'-dtiff', strcat(ResFolder,'/Subpopulation.tiff'));
+    print(1,'-dtiff', 'Results/Subpopulation.tiff');
+ 
     % display eigen-gap of graph Laplacian
     if isempty(NC)
         figure(2);
@@ -123,7 +124,8 @@ if switch1==1
         ylabel('Eigenvalue of graph Laplacian \lambda_i');
         set(gca,'FontName','Arial');
         set(gca,'FontSize',12);
-        print(2,'-dtiff', strcat(ResFolder,'/EigenGap.tiff'));  
+%         print(2,'-dtiff', strcat(ResFolder,'/EigenGap.tiff')); 
+    print(2,'-dtiff', 'Results/EigenGap.tiff');
     end
 end
 cluster_label = idx;

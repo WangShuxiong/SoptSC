@@ -37,8 +37,8 @@ if root_cell == 0
 %     root_cell0 = 1;
     [aa1,aa2] = find(low_dis == max(low_dis(:)));
     root_cell0 = aa1(1);
-    display('root_cell0')
-    display([root_cell0 aa2(1)]);
+%     display('root_cell0')
+%     display([root_cell0 aa2(1)]);
 else
     root_cell0 = root_cell;
 end
@@ -177,7 +177,7 @@ if root_cluster ~= 0
         root_cell = rootcc_idx(root_cell1);
         display('Inferred root cell is (given root cluster):');
         display(root_cell);
-        plot(tau_score);
+%         plot(tau_score);
     end
     
 else
@@ -210,7 +210,7 @@ else
                 root_cell = rootcc_idx(root_cell1);
                 display('Inferred root cell is (given root cluster):');
                 display(root_cell);
-                plot(tau_score);
+%                 plot(tau_score);
             end
             
             
@@ -234,8 +234,8 @@ else
                 [~,root_cell1] = max(tau_score);
                 root_cell = rootcc_idx(root_cell1);
                 display('Inferred root cell is (given root cluster):');
-                display(root_cell);
-                plot(tau_score);
+%                 display(root_cell);
+%                 plot(tau_score);
             end
             
             
