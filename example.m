@@ -2,6 +2,7 @@
 clear;
 clc;
 echo on;
+
 addpath('Data');
 addpath('NNDSVD');
 addpath('symnmf2');
@@ -9,11 +10,15 @@ addpath('symnmf2');
 % Load data
 load Guo2010.mat;
 
+% To save results 
+ResFolder = strcat('Results_',string(datetime('now','Format','yyyyMMdd_HHmm')));
+mkdir(ResFolder);
+
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
 NC = [];    
 No_exc_cell = 0;
 No_features = 2000;
-[W,No_cluster,cluster_label,latent,H,Gene_sel_idx] = SOptSC_cluster(data,NC,No_exc_cell,No_features);
+[W,No_cluster,cluster_label,latent,H,Gene_sel_idx] = SOptSC_cluster(data,NC,No_exc_cell,No_features,ResFolder);
 
 %% Pseudotime and lineage inference
 root_cluster = 0;
