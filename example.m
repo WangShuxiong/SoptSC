@@ -13,7 +13,7 @@ load Guo2010.mat;
 
 % To save results 
 ResFolder = strcat('Results_',string(datetime('now','Format','yyyyMMdd_HHmmss')));
-mkdir(ResFolder);
+mkdir(ResFolder{1});
 
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
 NC = [];    
