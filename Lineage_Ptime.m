@@ -1,4 +1,4 @@
-function [Lineage, Ptime,Cell_dist] = Lineage_Ptime(W,No_cluster,cluster_label,root_cluster,root_cell,latent,reverse)
+function [Lineage, Ptime,Cell_dist] = Lineage_Ptime(W,No_cluster,cluster_label,root_cluster,root_cell,latent,reverse,ResFolder)
 
 % Input
 %   -W:             Cel-to-cell similarity matrix
@@ -247,10 +247,11 @@ end
 % Compute CC MST
 rootedTree = digraph(pred(pred~=0),find(pred~=0));
 Lineage = pred;
-figure;
+figure(3);
 plot(rootedTree);
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
+print(3,'-dtiff', strcat(ResFolder,'/Lineage.tiff'));
 
 
 
@@ -266,8 +267,9 @@ colormap parula;
 cmap = colormap;
 mymap = cmap(1:58,:);
 colormap(mymap);
-figure;
+figure(4);
 scatter(latent(Ptime,1),latent(Ptime,2),30,c,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
+print(4,'-dtiff', strcat(ResFolder,'/Pseudotime.tiff'));
 
 
 cb = colorbar;

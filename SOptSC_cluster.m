@@ -110,8 +110,7 @@ if switch1==1
     legend(lgd,'FontSize',10,'Location','best');%,'Orientation','horizontal');
     set(gca,'FontName','Arial');
     set(gca,'FontSize',12);
-    
-    print(1,'-dtiff', strcat(ResFolder,'/Subpopulation.tiff'));
+    print(1,'-dtiff', strcat(ResFolder,'/Subpopulations.tiff'));
      
     % display eigen-gap of graph Laplacian
     if isempty(NC)
