@@ -14,7 +14,6 @@ function plot_genes(gene_set,allgenes,data,latent)
 gene_set_no = length(gene_set);
 allgenes_no = length(allgenes);
 
-
 gene_set_idx = zeros(1,gene_set_no);
 
 for i = 1:gene_set_no
@@ -23,8 +22,10 @@ for i = 1:gene_set_no
             gene_set_idx(i) = j;
         end
     end
+    if gene_set_idx(i)==0
+        disp("Warning: gene " + gene_set(i) + " not found");
+    end        
 end
-
 
 MM = data(gene_set_idx,:);
 
