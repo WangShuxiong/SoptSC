@@ -7,7 +7,6 @@ function [No_cluster,W,idx,eigenvalues,H] = Main(nC,data)
 %
 % Output:
 %           W: Cell-to-cell similarity matrix.
-%           P: Transition matrix
 %  No_cluster: Number of cluster computed by SoptSC if nC = [];
 %             otherwise, No_cluster = nC
 %         idx: Cluster label
@@ -40,7 +39,6 @@ W = SimilarityM(realdata,lambda,data);
     
     ZZ = sort(abs(real(all_eigs)));        
     No_cluster1 = length(find(ZZ<=0.01));
-    display(No_cluster1);
     
 %% Determinning the number of clusters
 eigenvalues = [];

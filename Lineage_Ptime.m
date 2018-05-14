@@ -37,8 +37,6 @@ if root_cell == 0
 %     root_cell0 = 1;
     [aa1,aa2] = find(low_dis == max(low_dis(:)));
     root_cell0 = aa1(1);
-%     display('root_cell0')
-%     display([root_cell0 aa2(1)]);
 else
     root_cell0 = root_cell;
 end
@@ -52,19 +50,6 @@ W_graph = W_graph1;
 % % find the longest vertices in each clique based on shortest path distance on graph
 AA = graph(W_graph);
 Shortest_path = distances(AA);
-%
-% Vertex = zeros(nComponents,2);
-% if nComponents >1
-%     Inter_dist = distances(AA);
-%     for i = 1:nComponents
-%         memberi = members{i};
-%        ddi = Inter_dist(members{i},members{i});
-%        [ia,ib] = find(ddi==max(ddi(:)));
-%        Vertex(i,:) = [memberi(ia(1)) memberi(ib(1))];
-%     end
-% end
-
-% low_dis = squareform(pdist(latent,'cityblock'));
 
 % find the longest vertices in each clique based on distance in low dim
 % trajectory
@@ -78,7 +63,6 @@ if nComponents >1
     end
 end
 
-display(Vertex);
 
 if nComponents >1
     root_zz = 1;
@@ -136,6 +120,7 @@ end
 W_graph = (W_graph + W_graph')./2;
 
 
+
 CC_Graph = graph(W_graph);
 % figure;
 % plot(CC_Graph,'Marker','s','MarkerSize',5,'Layout','force','NodeLabel',[],...
@@ -175,9 +160,9 @@ if root_cluster ~= 0
         end
         [~,root_cell1] = max(tau_score);
         root_cell = rootcc_idx(root_cell1);
-        display('Inferred root cell is (given root cluster):');
+        display('Inferred root cell is:');
         display(root_cell);
-%         plot(tau_score);
+%        plot(tau_score);
     end
     
 else
@@ -187,7 +172,7 @@ else
     else
         % find the root cluster
         [a1,a2] = find(CC_adjacent == max(CC_adjacent(:)));
-        display('Potential root cluster');
+        display('Root cluster candidates:');
         display([a1 a2]);
         % root_cell = [], infer root_cell based on inferred root_cluster
         if reverse == 1
@@ -208,13 +193,10 @@ else
                 end
                 [~,root_cell1] = max(tau_score);
                 root_cell = rootcc_idx(root_cell1);
-                display('Inferred root cell is (given root cluster):');
+                display('Inferred root cell is:');
                 display(root_cell);
-%                 plot(tau_score);
+%                plot(tau_score);
             end
-            
-            
-            
         else
             [Tree,pred] = minspantree(CC_Graph,'Root',a2);
             
@@ -233,9 +215,9 @@ else
                 end
                 [~,root_cell1] = max(tau_score);
                 root_cell = rootcc_idx(root_cell1);
-                display('Inferred root cell is (given root cluster):');
-%                 display(root_cell);
-%                 plot(tau_score);
+                display('Inferred root cell is:');
+                display(root_cell);
+%                plot(tau_score);
             end
             
             
@@ -254,10 +236,8 @@ set(gca,'ytick',[]);
 
 
 
-
-
 %% plot ptime
-Cell_dist = Short_pathd1(root_cell,:);
+Cell_dist = Short_pathd(root_cell,:);
 [~,Ptime] = sort(Short_pathd1(root_cell,:));
 
 % % plot pseudotime on the latent space
@@ -284,30 +264,3 @@ set(gca,'xtick',[]);
 set(gca,'ytick',[]);
 set(gca,'FontName','Arial');
 set(gca,'FontSize',12);
-
-% %% plot cluster color on lineage tree
-% mycolor;
-% pred = Lineage;
-% rootedTree = digraph(pred(pred~=0),find(pred~=0));
-% plot(rootedTree,'Marker','o','MarkerSize',20,'NodeColor',mycolor,'NodeLabel',[]);
-% set(gca,'xtick',[]);
-% set(gca,'ytick',[]);
-%
-% %% plot ptime color on lineage tree
-% colormap parula;
-% cmap = colormap;
-% mymap = cmap(1:58,:);
-%
-% ptimecolor = zeros(No_cluster,1);
-%
-% for i = 1:No_cluster
-%     ptimecolor(i) = mean(Ptime(find(cluster_label==i)));
-% end
-%
-% pred = Lineage;
-% rootedTree = digraph(pred(pred~=0),find(pred~=0));
-% colormap(mymap);
-% plot(rootedTree,'Marker','o','MarkerSize',20,'NodeCData',ptimecolor, 'NodeColor','flat','NodeLabel',[]);
-% set(gca,'xtick',[]);
-% set(gca,'ytick',[]);
-

@@ -14,29 +14,23 @@ function W = SimilarityM(X,lambda,data)
 %
 % Output
 %   1) Cell-to-cell similarity matrix for clustering: W
-%   2) Cell-to-cell similarity matrix for pseudotime: P
 
 
 [m,n] = size(X);
+% KNN Search for finding nearest neighbors
 if m>=60
     [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',60);
 else
     [coeff1,X1,pca_eigvalue1] = pca(X','NumComponents',m);
 end
 
-% covx = cov(X');
-% pca_eigvalue1 = sort(eig(covx),'descend');
+
 [~,No_Comps1] = max(abs(pca_eigvalue1(2:end-1) - pca_eigvalue1(3:end)));
-
-display(sum(pca_eigvalue1(1:No_Comps1+1))./sum(pca_eigvalue1))
-
-display(No_Comps1);
 
 cc = cumsum(pca_eigvalue1(2:end));
 dd = cc(2:end)./sum(pca_eigvalue1(2:end));
 
 K1 = length(find(dd<=0.3));
-% display(K1);
 
 if K1 <= 10
     K = 10;
@@ -47,16 +41,13 @@ else
 end
 InitY = pca1(data',3);
 X2 = tsne(X','Standardize',true,'Perplexity',20,'NumDimensions',3,'InitialY',InitY);
-% X2 = tsne(X', [], InitY, [], 20);
 
-display(K);
 
 D = ones(n,n);
 if No_Comps1>=1
     No_Comps1 = 1;
 end
 
-No_Comps1 = 1;
 [IDX,~] = knnsearch(X2(:,1:No_Comps1+2),X2(:,1:No_Comps1+2),'k',K);
 
 for jj = 1:n
@@ -81,6 +72,7 @@ W = 0.5.*(abs(Z)+abs(Z'));
         Y1 = zeros(m,n); Y2 = zeros(1,n); Y3 = zeros(n,n);
         iter = 0;
         
+        display('Iter  Err');
         while 1
             iter = iter + 1;
             if iter >= maxiter
@@ -128,7 +120,7 @@ W = 0.5.*(abs(Z)+abs(Z'));
             Y2 = Y2 + mu*(ones(1,n) - ones(1,n)*Z);
             Y3 = Y3 + mu*(Z - J);
             
-            fprintf('%d, %8.6f, %8.6f\n',iter,norm(X-X*Z-E),norm(Z-J));
+            fprintf('%d, %8.6f\n',iter,norm(X-X*Z-E));
             Err(iter,:) = [norm(X-X*Z-E) norm(Z-J)];
             
             if max(Err(iter,:)) <= epsilon

@@ -1,13 +1,11 @@
 This is a MATLAB implementation of SoptSC, a computational method for single cell data analysis. More specifically, SoptSC can
 
-	1. Identify the number of clusters from the input data.
-	2. Identify cell subpopulations.
-	3. Identify marker genes for each cell subpopulation.
-	4. Infer pseudotime (temporal ordering of cells) in an unsupervised manner: i.e., initial cell is not required.
-	5. Infer lineage in an unsupervised manner: i.e., initial cluster is 
-not required. 
-	6. Infer signaling network given a group of Ligand-Receptor pairs and
-	   their downstream target genes (to be updated).
+1. Identify the number of clusters from the input data.
+2. Identify cell subpopulations.
+3. Identify marker genes for each cell subpopulation.
+4. Infer pseudotime (temporal ordering of cells) in an unsupervised manner: i.e., initial cell is not required.
+5. Infer lineage in an unsupervised manner: i.e., initial cluster is not required. 
+6. Infer signaling network given a group of Ligand-Receptor pairs and their downstream target genes (to be updated).
 
 
 =======
@@ -22,9 +20,9 @@ Please refer to each M file for more detailed descriptions of the corresponding 
 
 This directory includes:
 
-   1) example.m -------- an example run of SOptSC on a specific dataset (see here for QUICKSTART).
+   1) Example.m -------- an example run of SOptSC on a specific dataset (see here for QUICKSTART).
    
-   2) SOptSC_cluster.m  --------the M file contains all components of the algorithm for clusters. 
+   2) SoptSC_cluster.m  --------the M file contains all components of the algorithm for clusters. 
     Please refer to this file for further information.
    
    3) Lineage_Ptime.m --------the M file contains all components of the algorithm for pseudotime and lineage inference.
@@ -38,14 +36,16 @@ This directory includes:
    6) NNDSVD    -------- SVD-based initialization for NMF from:
 	                      [2] C. Boutsidis and E. Gallopoulos, SVD-based initialization: A head
     	                      start for nonnegative matrix factorization, Pattern Recognition, Elsevier.
-   7) Plotgenes.m   --------- Plot selected genes specified by users.
-   8) newmap.mat    --------- colormap used for plot_genes.
+   7) Plot_cluster.m   --------- Plot clusters on 2-dimensional space.
+   8) Plot_eigengap.m  ———————— Plot eigenvalues of the truncated graph Laplacian to illustrate the estimation of number of clusters.
+   9) plot_lineage.m ———————— plot cluster and pseudotime on the inferred lineage tree.
+   10) plot_lineage_marker.m ———————— plot marker genes on the inferred lineage tree.
+   11) plot_marker.m ———————— plot marker genes on the low dimensional space of cells.
+   12) newmap.mat    --------- colormap used for plot_genes.
    
-   9) Example data can be found in Data
-   10) The results are saved in Results
+   
 
-
-Please refer to example.m for instructions on how to use this code.
+Please refer to Example.m for instructions on how to use this code.
 
 
 Please feel free to send us an email if you have any trouble in running our code. 

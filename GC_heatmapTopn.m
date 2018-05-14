@@ -1,23 +1,27 @@
-function Gene_labels = GC_heatmapTopn(data,cluster_label,H,allgenes,gene_idx,topn)
+function Gene_labels = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell,No_select_genes,topn)
 % This function assign genes to each cluster by SoptSC
 %
 %   Input:
-%       data: gene-cell matrix
+%       data: full gene-cell data matrix
 %       cluster_label: cluster labels for all cells
 %       H: non-negative matrix such that W = H*H^T
-%       allgenes: gene annotations
-%       gene_idx: Candidate marker gene indices.
-%       topn: Number of markers selected for each cluster
-
+%       No_exc_cell: Gene selection parameter range from [0,No_cells] (No_cells represents
+%                   the number of cells), we remove genes that are expressed less than 
+%                   No_exc_cell cells and more than (No_cells - No_exc_cell)
+%                   cells (Default value: No_exc_cell = 6)
+%       No_select_genes: maximal number of genes to be ploted
+%       topn: Number of markers for each cluster
+%
 %   Output:
 %       Gene_labels: gene label information for each gene associated with a specific
-%       cluster, the first columns of Gene_labels represents gene indices;
-%       the second column of Gene_labels represents the cluster index that 
-%       the gene belongs to; the third column represent gene score associated
-%       with corresponding cluster.
+%       cluster.
+%       -- 1st columns of Gene_labels represents gene indices;
+%       -- 2nd column of Gene_labels represents the cluster index that the gene belongs to; 
+%       -- 3rd column represent gene score associated with corresponding cluster.
+
+[~,gene_idx] = Data_selection(data,No_exc_cell,No_select_genes);
 
 data = data(gene_idx,:);
-
 
 NC = max(cluster_label);
 m = size(data,1);
@@ -47,6 +51,8 @@ CGI = [];
 topn1 = topn;
 gene_id = [];
 cell_id = [];
+
+G_table = [];
 for i = 1:NC
     % order genes within each cluster
     Z = find(Gene_label==i);
@@ -57,32 +63,20 @@ for i = 1:NC
         topn1 = length(Z);
     end
     
-    display(topn1);
-    
     gene_id = [gene_id; i.*ones(topn1,1)];
     cell_id = [cell_id; i.*ones(length(find(cluster_label==i)),1)];
     Z2 = Z(I(1:topn1));
     OGI = [OGI; Z2];
     OGV = [OGV; Z1V(1:topn1)];
     
-    %order cells
+    ICS = cell(topn,1);
+    ICS(1:length(Z2)) = allgenes(gene_idx(Z2));
+    G_table = [G_table, table(ICS, 'VariableNames',cellstr(['Markers_C' num2str(i)]))];
     Y = find(cluster_label==i);
     CGI = [CGI; Y];
     topn1 = topn;
 end
-
-%% allgenes string to cell
-% allgs = cell(size(allgenes));
-% for i = 1:length(allgs)
-%     allgs{i} = allgenes{i};
-% end
-% %% plot gene-cell heatmap
-% RowLabelsValue = allgs(gene_idx);
-% % HeatMap(data(OGI,CGI),'RowLabels', ColumnLabelsValue)
-% HMdata = data(OGI,CGI);
-% 
-% HeatMap(HMdata,'RowLabels', RowLabelsValue,'Standardize',2,'DisplayRange',2,'Colormap',redbluecmap)
-
+display(G_table);
 
 %% data normalization and zscroe
 % kk = 1 row; kk = 2 column
@@ -99,16 +93,17 @@ scale(tscale == 0) = 1;
 idata = bsxfun(@minus, idata, center);
 sdata = bsxfun(@rdivide, idata, scale);
 
-thresh = 4;
+thresh = 3;
 colormap redbluecmap;
 clims = [-thresh thresh];
 imagesc(sdata,clims);
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
 
-yticks(1:length(OGI));
-yticklabels(allgenes(gene_idx(OGI)));
-
+if length(OGI) <= 200
+    yticks(1:length(OGI));
+    yticklabels(allgenes(gene_idx(OGI)));
+end
 cb = colorbar;
 ax = gca;
 axpos = ax.Position;
@@ -118,30 +113,3 @@ cb.Position = cpos;
 ax.Position = axpos;
 
 
-
-%% Creat table
-% T = table(allgenes(gene_idx(OGI)),Gene_label(OGI),'VariableNames',{'Gene_Name','Cluster'});
-% writetable(T,'Markers_ds5.csv');
-
-% % hold on;
-% % a = get(gca,'Xlim');
-% % b = get(gca,'Ylim');
-% % 
-% % axis([a(1) a(2) b(1) b(2)+1]);
-% % 
-% % 
-% % for i = 1:NC
-% %     bili(i) = length(find(cluster_label ==i));
-% % end
-% % bili = bili./sum(bili);
-% % bili = cumsum(bili);
-% % 
-% % xpoint = a(1) + (a(2)-a(1)).*bili;
-% % ypoint = b(2)+1;
-% % 
-% % point = [xpoint; ypoint.*ones(size(xpoint))];
-% % 
-% % for i = 1:NC-1
-% %     line(point(:,i),point(:,i+1),'Color','r');
-% %     hold on;
-% % end
