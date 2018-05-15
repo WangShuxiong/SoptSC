@@ -13,8 +13,16 @@ for i = 1:length(cluster_labs)
 end
 
 
+ia = zeros(1,length(marker));
+for i = 1:length(marker)
+    for j = 1:length(allgenes)
+        if strcmp(upper(marker{i}),upper(allgenes{j}))
+            ia(i) = j;
+        end
+    end
+end
 
-[~,ia,~] = intersect(allgenes,marker,'stable');
+
 gname = allgenes(ia);
 
 display(allgenes(ia));
