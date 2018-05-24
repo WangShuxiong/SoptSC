@@ -9,6 +9,11 @@ This is a MATLAB implementation of SoptSC, a computational method for single cel
 
 
 =======
+The current SoptSC manuscript is on bioRxiv: 
+Wang, S., MacLean, A.L. and Nie, Q., SoptSC: Similarity matrix optimization for clustering, lineage, and signaling inference.
+https://www.biorxiv.org/content/early/2018/05/12/168922
+
+=======
 Requires: 
 MATLAB R2017b or later (where function tSNE is included)
 
