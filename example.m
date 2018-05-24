@@ -34,7 +34,7 @@ data = log10(data_matrix +1);
 NC = [];    % NC is the number of clusters: can be specified by user, or
             % if not given (NC = []), it will be inferred
             
-No_exc_cell = 0.03.*size(data,2);
+No_exc_cell = 0.003.*size(data,2);
 No_features = 3000;
 
 [W,No_cluster,cluster_label,H,eigenvalues] = SoptSC_cluster(data,NC,No_exc_cell,No_features);
