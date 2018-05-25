@@ -25,7 +25,7 @@ cmap1 = jet;
 mymap1 = cmap1(1:end,:);
 ncolor = size(mymap1,1);
 
-mycolor = mymap1(1:round(ncolor./No_cluster):1+ncolor,:);
+mycolor = mymap1(1:round(ncolor./No_cluster):ncolor,:);
 
 figure;
 for ik = 1:No_cluster
