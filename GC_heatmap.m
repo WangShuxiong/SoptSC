@@ -1,5 +1,6 @@
 function Gene_labels = GC_heatmap(data,cluster_label,H,No_exc_cell,No_select_genes)
-% This function assign genes to each cluster by SoptSC
+% This function assign genes to each cluster by SoptSC and plot gene cell
+% heatmap
 %
 %   Input:
 %       data: full gene-cell data matrix
@@ -97,9 +98,6 @@ clims = [-3 3];
 imagesc(sdata,clims);
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
-
-% yticks(1:size(data,1));
-% yticklabels(allgenes(OGI));
 
 cb = colorbar;
 ax = gca;

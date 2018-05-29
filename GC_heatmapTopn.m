@@ -2,15 +2,17 @@ function Gene_labels = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell,
 % This function assign genes to each cluster by SoptSC
 %
 %   Input:
-%       data: full gene-cell data matrix
-%       cluster_label: cluster labels for all cells
-%       H: non-negative matrix such that W = H*H^T
-%       No_exc_cell: Gene selection parameter range from [0,No_cells] (No_cells represents
+%      -- data: full gene-cell data matrix
+%      -- cluster_label: cluster labels for all cells
+%      -- H: non-negative matrix such that W = H*H^T
+%      -- No_exc_cell: Gene selection parameter range from [0,No_cells] (No_cells represents
 %                   the number of cells), we remove genes that are expressed less than 
 %                   No_exc_cell cells and more than (No_cells - No_exc_cell)
 %                   cells (Default value: No_exc_cell = 6)
-%       No_select_genes: maximal number of genes to be ploted
-%       topn: Number of markers for each cluster
+%     --  No_select_genes: maximal number of genes to be ploted
+%     --  topn: Number of top markers for each cluster
+%     --  folder: folder name where the figures will be saved to
+%   
 %
 %   Output:
 %       Gene_labels: gene label information for each gene associated with a specific
