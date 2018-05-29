@@ -1,5 +1,7 @@
 function W = SimilarityM(X,lambda,data)
-% Solving the following optimization problem by ADMM
+%
+% Computing cell-to-cell similarity matrix by solving the following 
+% optimization problem via ADMM
 %
 %    min_{Z,E}  ||Z||_* + lambda ||E||_{2,1}
 %    s.t.       X = XZ + E;
@@ -7,13 +9,11 @@ function W = SimilarityM(X,lambda,data)
 %               Z_{i,j} = 0 for (i,j)\in Omega
 %
 % Input
-%   1) Single cell data X, a m*n matrix, with m rows(genes) and n columns(cells);
-%   2) lambda, the default value is 0.5;
-%   3) K: number of nearest neighbor points, which is set as
-%      K = max(10,min(0.2*m,20))
+%   1) X: Single cell data, a m*n matrix, with m rows(genes) and n columns(cells);
+%   2) lambda: the default value is 0.5;
 %
 % Output
-%   1) Cell-to-cell similarity matrix for clustering: W
+%   1) W: Cell-to-cell similarity matrix
 
 
 [m,n] = size(X);

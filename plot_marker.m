@@ -5,6 +5,7 @@ function plot_marker(data,gene_set,allgenes,latent,folder)
 %  --   all_genes: all genes from the single cell data set
 %  --   data: a m*n single cell data matrix with m rows(genes) and n columns(cells)
 %  --   latent: low dimension space induced from cell-cell transition matrix
+%  --   folder: folder name where the results will be save to.
 %
 %   Output:
 %           figures showing gene expression among cell subpopulations

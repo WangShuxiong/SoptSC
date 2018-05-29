@@ -8,8 +8,9 @@ function [Lineage, Ptime,Cell_dist] = Lineage_Ptime(W,No_cluster,cluster_label,r
 %   -root_cluster:  Set up root cluster; If root_cluster is set
 %                   as 0, SoptSC automatically generates root cluster.
 %   -root_cell:     Root cell specified by user; If root_cell is not
-%                   provided (root_cell = 0), SoptSC will automatically
-%                   produces the root cell
+%                   provided (root_cell = 0), SoptSC will generate the 
+%                   root cell in an unsupervised manner
+%                   
 %   -latent:        Latent space from SoptSC
 %   -reverse:       Parameter to infer whether to reverse the lineage tree;
 %                   Set reverse = 1 if you want to reverse the lineage
@@ -17,9 +18,8 @@ function [Lineage, Ptime,Cell_dist] = Lineage_Ptime(W,No_cluster,cluster_label,r
 % Output
 %   -Lineage:       Lineage identified by SoptSC.
 %   -Ptime:         Pseudotime inferred by SoptSC.
-%   -Cell_dist:     Cell-to-cell distance in graph.
+%   -Cell_dist:     Cell-to-cell distance on graph.
 
-% Ptime here is cell orders on cell_dist
 %% Inferring psudotime
 low_dis = squareform(pdist(latent));
 No_cell = size(W,1);
@@ -48,12 +48,9 @@ W_graph = W_graph1;
 
 [nComponents,sizes,members] = networkComponents(W_graph);
 
-% % find the longest vertices in each clique based on shortest path distance on graph
 AA = graph(W_graph);
 Shortest_path = distances(AA);
 
-% find the longest vertices in each clique based on distance in low dim
-% trajectory
 Vertex = zeros(nComponents,2);
 if nComponents >1
     for i = 1:nComponents

@@ -1,9 +1,15 @@
 function plot_lineage(Lineage,No_cluster,cluster_label,Cell_dist,folder)
+% Plot clustering labels and pseudotime on lineage inferred by SoptSC.
+% Input:
+%   -- Lineage: lineage inferred by SoptSC
+%   -- No_cluster: Number of clusters
+%   -- cluster_label: Cell clustering labels
+%   -- Cell_dist: distance between each cell and root cell on cell-cell graph
+%   -- folder: folder name where the results will be saved to.
 
 cmap1 = jet;
 mymap1 = cmap1;
 ncolor = size(mymap1,1);
-
 mycolor = mymap1(1:round(ncolor./No_cluster):1+ncolor,:);
 
 % plot cluster color on lineage tree

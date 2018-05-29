@@ -1,5 +1,15 @@
 function [eigenvalues,No_cluster] = Num_cluster(W,NC1)
-% Computing number of cluster
+% Estimation of the number of clusters from single cell data
+%
+% Input:
+%   -- W: cell-to-cell similarity matrix
+%   -- NC1: number of clusters specified
+%
+% Output:
+%   -- eigenvalues: eigenvalues of the graph Laplacian of the truncated
+%   consensus matrix.
+%   -- No_cluster: Number of clusters inferred by SoptSC.
+%
 nno_cluster = 2:20;  % 2:20
 
 if NC1 <= 5

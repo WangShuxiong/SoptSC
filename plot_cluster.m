@@ -5,10 +5,11 @@ function latent = plot_cluster(W,cluster_label,No_cluster,method,folder)
 % - W: similarity matrix
 % - eigenvalues: eigenvalues of graph Laplacian of the truncated consensus
 %   matrix
-% - method: dimension reduction method, 'tsne' or 'pca'
+% - method: dimension reduction method, 'tsne' or 'pca' (e.g., method = 'tsne')
 %
 % Output
 % - latent: 2-dimensional projection
+
 W1 = W./(ones(1,size(W,1))*W*ones(size(W,1),1));
 if strcmp(method,'pca')
     dvis = pca1(W1,2);
