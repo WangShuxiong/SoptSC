@@ -64,18 +64,16 @@ if size(data1,1) <=1000
 else
     No_sel_genes = min([No_features round(size(data1,1))]);
 end
-% No_sel_genes = round(1*size(data1,1));
 
 gene_selection = find(aa>=bb(No_sel_genes));
 input_data = data1(gene_selection,:);
 
 
-% Gene_sel_idx = G_filter_idx(gene_selection);
-
 eigenvalues = [];
 nC = NC;
 [No_cluster,W,idx,eigenvalues,H] = Main(nC,input_data);
 
+% save eigenvalues of the graph Laplacian of the truncated consensus matrix
 if isempty(NC)
     T = table(eigenvalues(1:min([No_cells 100])));
     writetable(T,'Results/EigenValue.txt','WriteVariableNames',false);
