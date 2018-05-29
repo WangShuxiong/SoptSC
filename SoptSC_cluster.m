@@ -20,8 +20,10 @@ function [W,No_cluster,cluster_label,H,eigenvalues] = SoptSC_cluster(data,NC,No_
 %   --  W: Cell-to-cell similarity matrix.
 %   --  No_cluster: Number of clusters
 %   --  cluster_label: cluster labels for all cells.
-%   --  latent: low dimensional space (first three eigenvectors) of transition matrix P
+%   --  latent: An nx2 matrix representing low dimensional latent space for all cells
 %   --  H: Non-negative matrix such that W = H*H^T
+%   --  eigenvalues: eigenvalues of the graph Laplacian of the truncated
+%       consensus matrix which is used to estimate the number of clusters 
 
 
 if nargin==1

@@ -1,4 +1,4 @@
-function plot_marker(data,gene_set,allgenes,latent)
+function plot_marker(data,gene_set,allgenes,latent,folder)
 %This function plot gene expression along cell subpopulations
 %   Input:
 %  --   gene_set: genes to be plot specified by users
@@ -39,11 +39,35 @@ for ik = 1:gene_set_no
     scatter(latent(:,1),latent(:,2),20,MM(ik,:),'filled','MarkerEdgeAlpha',0.8,'MarkerFaceAlpha',0.8);
     title(gene_set{ik});
     box off;
-%     set(gca,'LineWidth',1.5);
+    %     set(gca,'LineWidth',1.5);
     set(gca,'xtick',[]);
     set(gca,'ytick',[]);
     set(gca,'FontName','Arial');
     set(gca,'FontSize',12);
+    
+    ax = gca;
+    
+    cb = colorbar;
+    % ax = gca;
+    axpos = ax.Position;
+    cpos = cb.Position;
+    cpos(3) = 0.5*cpos(3);
+    cb.Position = cpos;
+    ax.Position = axpos;
+    % lim = caxis
+    % cb.Limits = lim;
+    aa = cell(1,2);
+    aa{1} = 'low';
+    aa{2} = 'high';
+    cb.TickLabels{1} = aa{1};
+    cb.TickLabels{end} = aa{2};
+    
+    for ii = 2:length(cb.TickLabels)-1
+        cb.TickLabels{ii} = [];
+    end
+    
+    
+    print([folder '\mk_ldm_' gene_set{ik}],'-dpdf','-r300');
 end
 end
 

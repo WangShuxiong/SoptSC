@@ -1,7 +1,8 @@
-function plot_lineage_marker(data,Lineage,allgenes,No_cluster,cluster_label,marker)
+function plot_lineage_marker(data,Lineage,allgenes,No_cluster,cluster_label,marker,folder)
 % Plot marker on lineage
 
-mk = marker;
+for ik = 1:length(marker)
+mk = marker(ik);
 [~,ia] = intersect(allgenes,mk);
 mk_val = data(ia,:);
 
@@ -53,4 +54,5 @@ set(gca,'FontSize',12);
 
 
 title(mk)
-print(['Results\Lineage_Marker_' marker],'-dpdf','-r300'); 
+print([folder '\Lineage_Marker_' marker{ik}],'-dpdf','-r300'); 
+end

@@ -1,4 +1,4 @@
-function plot_lineage(Lineage,No_cluster,cluster_label,Cell_dist)
+function plot_lineage(Lineage,No_cluster,cluster_label,Cell_dist,folder)
 
 cmap1 = jet;
 mymap1 = cmap1;
@@ -16,7 +16,7 @@ set(gca,'xtick',[]);
 set(gca,'ytick',[]);
 title('Cluster on lineage')
 
-print('Results\Lineage_Cluster_Color','-dpdf','-r300'); 
+print([folder '\Lineage_Cluster_Color'],'-dpdf','-r300'); 
 
 
 
@@ -64,4 +64,4 @@ set(gca,'FontSize',12);
 
 
 title('Pseudotime on lineage')
-print('Results\Lineage_ptime_Color','-dpdf','-r300'); 
+print([folder '\Lineage_ptime_Color'],'-dpdf','-r300'); 

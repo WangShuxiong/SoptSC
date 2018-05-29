@@ -1,4 +1,4 @@
-function Gene_labels = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell,No_select_genes,topn)
+function Gene_labels = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell,No_select_genes,topn,folder)
 % This function assign genes to each cluster by SoptSC
 %
 %   Input:
@@ -111,5 +111,7 @@ cpos = cb.Position;
 cpos(3) = 0.5*cpos(3);
 cb.Position = cpos;
 ax.Position = axpos;
+
+print([folder '\GChtmp_' num2str(topn)],'-dpdf','-r300','-fillpage'); 
 
 

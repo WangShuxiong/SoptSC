@@ -42,8 +42,9 @@ No_features = 3000;
 
 %% Plot cluster on 2-dimensional space
 clc;
-method = 'tsne'; % set method as 'pca' or 'tsne'
-latent = plot_cluster(W,cluster_label,No_cluster,method);
+folder = 'Results';     % all results are save in folder
+method = 'tsne';        % set method as 'pca' or 'tsne'
+latent = plot_cluster(W,cluster_label,No_cluster,method,folder);
 
 %% Plot Eigen-gap of truncated graph Laplacian of the consensus matrix (if NC = [])
 plot_eigengap(eigenvalues);
@@ -58,35 +59,33 @@ Gene_labels_all = GC_heatmap(data,cluster_label,H,No_exc_cell1,No_select_genes);
 
 %% Gene-cell heatmap for top n markers w.r.t each cluster
 topn = 20;
-Gene_labels_topn = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell1,No_select_genes,topn);
+Gene_labels_topn = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell1,No_select_genes,topn,folder);
 
 
 
 %% Plot gene expression on the low-dimensional projection of cells
 Marker = {'Krt14','Mt2','Krt10','Ptgs1','Lor','Flg2'};
-plot_marker(data,Marker,allgenes,latent)
+plot_marker(data,Marker,allgenes,latent,folder) 
 
 
 %% Bar plot of marker genes along clusters
-boxplot_marker(data,allgenes,Marker,cluster_label,No_cluster);
+boxplot_marker(data,allgenes,Marker,cluster_label,No_cluster,folder);
 
 
 %% Pseudotime and lineage inference
 
 root_cluster = 0;
 root_cell = 0;
-reverse = 1;
+reverse = 0;
 [Lineage, Ptime,Cell_dist] = Lineage_Ptime(W,No_cluster,cluster_label,root_cluster,root_cell,latent,reverse);
 
 
 %% Plot cluster color and pseudotime color on the lineage tree
-plot_lineage(Lineage,No_cluster,cluster_label,Cell_dist);
+plot_lineage(Lineage,No_cluster,cluster_label,Cell_dist,folder);
 
 %% Plot marker gene on the lineage tree
 
-for i = 1:length(Marker)
-plot_lineage_marker(data,Lineage,allgenes,No_cluster,cluster_label,Marker{i})
-end
+plot_lineage_marker(data,Lineage,allgenes,No_cluster,cluster_label,Marker,folder)
 
 
 

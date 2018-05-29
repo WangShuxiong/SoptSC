@@ -1,4 +1,4 @@
-function boxplot_marker(data,allgenes,marker,cluster_labs,No_cluster)
+function boxplot_marker(data,allgenes,marker,cluster_labs,No_cluster,folder)
 % Box plot for each gene along all clusters
 
 % colormap jet;
@@ -39,4 +39,5 @@ for i = 1:n
     boxplot(MM(i,:),group,'GroupOrder',cluster_notation,'Notch','on','PlotStyle','compact','Widths',0.9,'Colors',mycolor,...
         'LabelOrientation','horizontal'); 
     title(gname{i});
+    print([folder '\boxplot_mk_' gname{i}],'-dpdf','-r300');
 end

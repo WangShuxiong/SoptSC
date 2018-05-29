@@ -1,4 +1,4 @@
-function latent = plot_cluster(W,cluster_label,No_cluster,method)
+function latent = plot_cluster(W,cluster_label,No_cluster,method,folder)
 
 % plot cluster on 2-dimensional space
 % input
@@ -13,9 +13,8 @@ W1 = W./(ones(1,size(W,1))*W*ones(size(W,1),1));
 if strcmp(method,'pca')
     dvis = pca1(W1,2);
 elseif strcmp(method,'tsne')
-    %     InitY = pca1(W,2);
-    %     dvis = tsne(W,'Standardize',true,'Perplexity',30,'NumDimensions',2,'InitialY',InitY);
-    dvis = tsne(W,'Perplexity',30);
+        InitY = pca1(W1,2);
+        dvis = tsne(W1,'Standardize',true,'Perplexity',30,'NumDimensions',2,'InitialY',InitY);
 end
 
 
@@ -75,5 +74,5 @@ fig.PaperSize = [fig_pos(3) fig_pos(4)];
 %     fig.Position = [0 0 4 3];
 
 
-print(['Results\Cluster_' method],'-dpdf','-r300','-fillpage'); %'-dpdf',
+print([folder '\Cluster_' method],'-dpdf','-r300','-fillpage'); %'-dpdf',
 latent = dvis;
