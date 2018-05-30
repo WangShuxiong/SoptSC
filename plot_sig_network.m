@@ -90,7 +90,9 @@ for j = 1:No_LR
     P(P<=threshold) = 0;
     adjacentM =P(new_order,new_order);
     adjacentM(1:No_cells+1:end) = 0;
-    adjacentM = adjacentM./max(adjacentM(:));
+    if max(adjacentM(:)) > 0
+        adjacentM = adjacentM./max(adjacentM(:));
+    end
     bg = digraph(adjacentM);
     bg.Edges.LWidths = 3*bg.Edges.Weight/max(bg.Edges.Weight);
     figure;
@@ -115,7 +117,9 @@ P = Pall;
 P(P<=threshold) = 0;
 adjacentM =P(new_order,new_order);
 adjacentM(1:No_cells+1:end) = 0;
-adjacentM = adjacentM./max(adjacentM(:));
+if max(adjacentM(:)) > 0
+    adjacentM = adjacentM./max(adjacentM(:));
+end
 bg = digraph(adjacentM);
 bg.Edges.LWidths = 3*bg.Edges.Weight/max(bg.Edges.Weight);
 figure;
@@ -147,7 +151,9 @@ for j = 1:No_LR
     
     adjacentM =P_cluster;
     adjacentM(1:No_cluster+1:end) = 0;
-    adjacentM = adjacentM./max(adjacentM(:));
+    if max(adjacentM(:)) > 0
+        adjacentM = adjacentM./max(adjacentM(:));
+    end
     bg = digraph(adjacentM);
     bg.Edges.LWidths = 10*bg.Edges.Weight/max(bg.Edges.Weight);
     figure;
@@ -180,7 +186,9 @@ end
     
     adjacentM =P_cluster;
     adjacentM(1:No_cluster+1:end) = 0;
-    adjacentM = adjacentM./max(adjacentM(:));
+    if max(adjacentM(:)) > 0
+        adjacentM = adjacentM./max(adjacentM(:));
+    end
     bg = digraph(adjacentM);
     bg.Edges.LWidths = 10*bg.Edges.Weight/max(bg.Edges.Weight);
     figure;
