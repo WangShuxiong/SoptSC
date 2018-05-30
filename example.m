@@ -23,6 +23,7 @@ echo on;
 addpath('Data');
 addpath('NNDSVD');
 addpath('symnmf2');
+addpath('Signaling');
 
 Data_all = importdata('JoostData.txt');
 data_matrix = Data_all.data;
