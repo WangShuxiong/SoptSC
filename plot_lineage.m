@@ -10,7 +10,7 @@ function plot_lineage(Lineage,No_cluster,cluster_label,Cell_dist,folder)
 cmap1 = jet;
 mymap1 = cmap1;
 ncolor = size(mymap1,1);
-mycolor = mymap1(1:round(ncolor./No_cluster):1+ncolor,:);
+mycolor = mymap1(1:round(ncolor./No_cluster):ncolor,:);
 
 % plot cluster color on lineage tree
 pred = Lineage;

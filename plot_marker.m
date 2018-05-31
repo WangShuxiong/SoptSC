@@ -47,7 +47,6 @@ for ik = 1:gene_set_no
     set(gca,'FontSize',12);
     
     ax = gca;
-    
     cb = colorbar;
     % ax = gca;
     axpos = ax.Position;
