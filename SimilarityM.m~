@@ -39,9 +39,9 @@ elseif K1 >=30
 else
     K = K1+1;
 end
-dim_init = 3;
-InitY = pca1(data',dim_init);
-X2 = tsne(X','Standardize',true,'Perplexity',20,'NumDimensions',dim_init,'InitialY',InitY);
+dim_init 
+InitY = pca1(data',3);
+X2 = tsne(X','Standardize',true,'Perplexity',20,'NumDimensions',3,'InitialY',InitY);
 
 
 D = ones(n,n);

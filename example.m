@@ -35,10 +35,14 @@ data = log10(data_matrix +1);
 NC = [];    % NC is the number of clusters: can be specified by user, or
             % if not given (NC = []), it will be inferred
             
-No_exc_cell = 0.003.*size(data,2);
+% No_exc_cell = 0.003.*size(data,2);
+No_exc_cell = 3;
 No_features = 3000;
 
 [W,No_cluster,cluster_label,H,eigenvalues] = SoptSC_cluster(data,NC,No_exc_cell,No_features);
+
+%% Plot Eigen-gap of truncated graph Laplacian of the consensus matrix (if NC = [])
+plot_eigengap(eigenvalues);
 
 
 %% Plot cluster on 2-dimensional space
@@ -47,8 +51,6 @@ folder = 'Results';     % all results are save in folder
 method = 'tsne';        % set method as 'pca' or 'tsne'
 latent = plot_cluster(W,cluster_label,No_cluster,method,folder);
 
-%% Plot Eigen-gap of truncated graph Laplacian of the consensus matrix (if NC = [])
-plot_eigengap(eigenvalues);
 
 
 
@@ -59,7 +61,7 @@ No_select_genes = 20000;
 Gene_labels_all = GC_heatmap(data,cluster_label,H,No_exc_cell1,No_select_genes);
 
 %% Gene-cell heatmap for top n markers w.r.t each cluster
-topn = 20;
+topn = 10;
 Gene_labels_topn = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell1,No_select_genes,topn,folder);
 
 
@@ -83,6 +85,10 @@ reverse = 0;
 
 %% Plot cluster color and pseudotime color on the lineage tree
 plot_lineage(Lineage,No_cluster,cluster_label,Cell_dist,folder);
+
+
+%% Plot pseudotime on latent space
+plot_pseudotime(latent,Ptime,folder);
 
 %% Plot marker gene on the lineage tree
 

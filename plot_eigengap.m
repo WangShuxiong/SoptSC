@@ -1,5 +1,5 @@
 function plot_eigengap(eigenvalues)
-
+figure;
 scatter(1:min([30 size(eigenvalues,1)]),eigenvalues(1:min([30 size(eigenvalues,1)])),20,'filled');
 box on;
 set(gca,'LineWidth',1.5);

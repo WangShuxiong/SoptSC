@@ -15,7 +15,7 @@ if strcmp(method,'pca')
     dvis = pca1(W1,2);
 elseif strcmp(method,'tsne')
         InitY = pca1(W1,2);
-        dvis = tsne(W1,'Standardize',true,'Perplexity',30,'NumDimensions',2,'InitialY',InitY);
+        dvis = tsne(W1,'Standardize',true,'Perplexity',35,'NumDimensions',2,'InitialY',InitY);
 end
 
 
