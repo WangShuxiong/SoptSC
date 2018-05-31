@@ -35,7 +35,6 @@ data = log10(data_matrix +1);
 NC = [];    % NC is the number of clusters: can be specified by user, or
             % if not given (NC = []), it will be inferred
             
-% No_exc_cell = 0.003.*size(data,2);
 No_exc_cell = 3;
 No_features = 3000;
 
