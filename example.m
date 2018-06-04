@@ -34,8 +34,8 @@ data = log10(data_matrix +1);
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
 NC = [];    % NC is the number of clusters: can be specified by user, or
             % if not given (NC = []), it will be inferred
-            
-No_exc_cell = 3;
+No_cells = size(data,2);
+No_exc_cell = 0.03*No_cells;
 No_features = 3000;
 
 [W,No_cluster,cluster_label,H,eigenvalues] = SoptSC_cluster(data,NC,No_exc_cell,No_features);
@@ -78,7 +78,7 @@ boxplot_marker(data,allgenes,Marker,cluster_label,No_cluster,folder);
 
 root_cluster = 0;
 root_cell = 0;
-reverse = 0;
+reverse = 1;
 [Lineage, Ptime,Cell_dist] = Lineage_Ptime(W,No_cluster,cluster_label,root_cluster,root_cell,latent,reverse);
 
 
