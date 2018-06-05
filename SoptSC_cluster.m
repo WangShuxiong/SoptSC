@@ -1,4 +1,4 @@
-function [W,No_cluster,cluster_label,H,eigenvalues] = SoptSC_cluster(data,NC,No_exc_cell,No_features)
+function [W,No_cluster,cluster_label,H,eigenvalues] = SoptSC_cluster(data,NC,No_exc_cell,No_features,folder)
 % G_filter_idx
 % SOptSC identifies clusters from single cell data
 %
@@ -76,7 +76,7 @@ nC = NC;
 % save eigenvalues of the graph Laplacian of the truncated consensus matrix
 if isempty(NC)
     T = table(eigenvalues(1:min([No_cells 100])));
-    writetable(T,'Results/EigenValue.txt','WriteVariableNames',false);
+    writetable(T, [folder '/EigenValue.txt'], 'WriteVariableNames',false);
 end
 
 cluster_label = idx;
