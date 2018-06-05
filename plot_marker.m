@@ -1,4 +1,4 @@
-function plot_marker(data,gene_set,allgenes,latent,folder)
+function plot_marker(data,gene_set,allgenes,latent,resfolder)
 %This function plot gene expression along cell subpopulations
 %   Input:
 %  --   gene_set: genes to be plot specified by users
@@ -67,7 +67,7 @@ for ik = 1:gene_set_no
     end
     
     
-    print([folder '\mk_ldm_' gene_set{ik}],'-dpdf','-r300');
+    print([resfolder '\mk_ldm_' gene_set{ik}],'-dpdf','-r300');
 end
 end
 

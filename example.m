@@ -28,6 +28,10 @@ addpath('Signaling');
 Data_all = importdata('JoostData.txt');
 data_matrix = Data_all.data;
 allgenes = Data_all.textdata(2:end,1);
+
+%% Set results folder
+resfolder = 'Results2';
+
 %% Log normalization of data
 data = log10(data_matrix +1);
 
@@ -39,18 +43,15 @@ No_cells = size(data,2);
 No_exc_cell = 0.03*No_cells;
 No_features = 3000;
 
-[W,No_cluster,cluster_label,H,eigenvalues] = SoptSC_cluster(data,NC,No_exc_cell,No_features,folder);
+[W,No_cluster,cluster_label,H,eigenvalues] = SoptSC_cluster(data,NC,No_exc_cell,No_features,resfolder);
 
 %% Plot Eigen-gap of truncated graph Laplacian of the consensus matrix (if NC = [])
-plot_eigengap(eigenvalues);
+plot_eigengap(eigenvalues,resfolder);
 
 
 %% Plot cluster on 2-dimensional space
-clc;
 method = 'tsne';        % set method as 'pca' or 'tsne'
-latent = plot_cluster(W,cluster_label,No_cluster,method,folder);
-
-
+latent = plot_cluster(W,cluster_label,No_cluster,method,resfolder);
 
 
 %% Gene-cell heatmap for all genes
@@ -61,17 +62,17 @@ Gene_labels_all = GC_heatmap(data,cluster_label,H,No_exc_cell1,No_select_genes);
 
 %% Gene-cell heatmap for top n markers w.r.t each cluster
 topn = 10;
-Gene_labels_topn = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell1,No_select_genes,topn,folder);
+Gene_labels_topn = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell1,No_select_genes,topn,resfolder);
 
 
 
 %% Plot gene expression on the low-dimensional projection of cells
 Marker = {'Krt14','Mt2','Krt10','Ptgs1','Lor','Flg2'};
-plot_marker(data,Marker,allgenes,latent,folder) 
+plot_marker(data,Marker,allgenes,latent,resfolder) 
 
 
 %% Bar plot of marker genes along clusters
-boxplot_marker(data,allgenes,Marker,cluster_label,No_cluster,folder);
+boxplot_marker(data,allgenes,Marker,cluster_label,No_cluster,resfolder);
 
 
 %% Pseudotime and lineage inference
@@ -83,15 +84,15 @@ reverse = 1;
 
 
 %% Plot cluster color and pseudotime color on the lineage tree
-plot_lineage(Lineage,No_cluster,cluster_label,Cell_dist,folder);
+plot_lineage(Lineage,No_cluster,cluster_label,Cell_dist,resfolder);
 
 
 %% Plot pseudotime on latent space
-plot_pseudotime(latent,Ptime,folder);
+plot_pseudotime(latent,Ptime,resfolder);
 
 %% Plot marker gene on the lineage tree
 
-plot_lineage_marker(data,Lineage,allgenes,No_cluster,cluster_label,Marker,folder)
+plot_lineage_marker(data,Lineage,allgenes,No_cluster,cluster_label,Marker,resfolder)
 
 
 

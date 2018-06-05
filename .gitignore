@@ -2,4 +2,9 @@
 \.DS_Store
 ReadMe.txt
 
+<<<<<<< refs/remotes/upstream/master
+=======
+Results/
+
+>>>>>>> update plots locations
 Results2/
