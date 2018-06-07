@@ -21,24 +21,6 @@ function Gene_labels = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell,
 %       -- 2nd column of Gene_labels represents the cluster index that the gene belongs to; 
 %       -- 3rd column represent gene score associated with corresponding cluster.
 
-No_cluster = max(cluster_label);
-No_cells_inC = [];
-for i = 1:No_cluster
-    No_cells_inC = [No_cells_inC; length(find(cluster_label==i))];
-end
-xtkval = cumsum(No_cells_inC);
-xtkval1 = zeros(size(xtkval));
-for i = 1:No_cluster
-    if i==1
-        xtkval1(i) = 0.5.*No_cells_inC(i);
-    else
-        xtkval1(i) = xtkval(i-1) + 0.5.*No_cells_inC(i);
-    end
-end
-    
-% xtkval = xtkval./max(xtkval);
-% xtkval = No_cluster.*xtkval;
-
 [~,gene_idx] = Data_selection(data,No_exc_cell,No_select_genes);
 
 data = data(gene_idx,:);
@@ -120,25 +102,12 @@ imagesc(sdata,clims);
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
 
-
-lgd = cell(1,No_cluster);
-for i = 1:No_cluster
-    if i<10
-        vv = 'CC';
-        vv(2:2) = num2str(i);
-        lgd{i} = vv;
-    else
-        vv = 'CCC';
-        vv(2:3) = num2str(i);
-        lgd{i} = vv;
-    end
-end
-
 if length(OGI) <= 200
     yticks(1:length(OGI));
     yticklabels(allgenes(gene_idx(OGI)));
-    xticks(xtkval1);
-    xticklabels(lgd);
+    xticks(1:length(OGI));
+    xticklabels(allgenes(gene_idx(OGI)));
+
 end
 cb = colorbar;
 ax = gca;
