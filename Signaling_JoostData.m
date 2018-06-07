@@ -24,7 +24,10 @@ Target = {{'Zeb2','Smad2','Wnt4','Wnt11','Bmp7','Sox9','Notch1'},...
 % less than the value of threshold is set to be zero. 
 % Save the result figurs in folder Results\Signaling
 threshold = 0.1;
-folder = 'Results\Signaling';
+
+% NB NEED TO CREATE DIR 'SIGNALING' WITHIN RESULTS FOLDER
+resfolder = 'Results';
+folder = [resfolder '/Signaling'];
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,folder)
 
 
@@ -50,7 +53,8 @@ Target = {{'Ctnnb1','Lgr5','Runx2','Apc','Mmp7','Dkk1','Ccnd1'},...
 
 %
 threshold = 0.1;
-folder = 'Results\Signaling';
+resfolder = 'Results';
+folder = [resfolder '/Signaling'];
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,folder)
 
 
@@ -75,6 +79,7 @@ Target = {{'Crebbp','Fos','Id1','Jun','Runx1','Smad1','Smad5','Sox4','Cdh1'}, ..
 
 %
 threshold = 0.03;
-folder = 'Results\Signaling';
+resfolder = 'Results';
+folder = [resfolder '/Signaling'];
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,folder)
 
