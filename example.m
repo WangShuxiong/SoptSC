@@ -34,7 +34,7 @@ allgenes = Data_all.textdata(2:end,1);
 data = log10(data_matrix +1);
 
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
-folder = 'Results2';     % all results are save in folder
+folder = 'Results2';     % all results are saved here
 NC = [];    % NC is the number of clusters: can be specified by user, or
             % if not given (NC = []), it will be inferred
 No_cells = size(data,2);
@@ -50,6 +50,15 @@ plot_eigengap(eigenvalues,folder);
 %% Plot cluster on 2-dimensional space
 method = 'tsne';        % set method as 'pca' or 'tsne'
 latent = plot_cluster(W,cluster_label,No_cluster,method,folder);
+
+
+%% Plot Eigen-gap of truncated graph Laplacian of the consensus matrix (if NC = [])
+plot_eigengap(eigenvalues,resfolder);
+
+
+%% Plot cluster on 2-dimensional space
+method = 'tsne';        % set method as 'pca' or 'tsne'
+latent = plot_cluster(W,cluster_label,No_cluster,method,resfolder);
 
 
 %% Gene-cell heatmap for all genes
