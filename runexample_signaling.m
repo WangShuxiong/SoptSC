@@ -8,7 +8,7 @@
 
 %% Setup  
 % NB NEED TO CREATE DIR 'SIGNALING' WITHIN RESULTS FOLDER
-resfolder = 'Results_0612';
+resfolder = 'Results2';
 sigfolder = [resfolder '/Signaling'];
 dlmwrite('Data/Joost_cluster_labels.txt', cluster_label)
 
@@ -106,4 +106,4 @@ for i = 1:size(Pidv,1)
     dlmwrite([sigfolder '/P_' Lig{i}{1} '_' Rec{i}{1} '.txt'], Pidv{i}, 'delimiter','\t')
 end
 
-close all;
+%close all;

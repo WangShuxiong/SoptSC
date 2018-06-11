@@ -7,7 +7,7 @@ source('plotP_functions.R')
 clusterlabels = read.table('Data/Joost_cluster_labels.txt')[,1]
 
 ## Set results folder
-resfolder = 'Results_0612'
+resfolder = 'Results2'
 
 ## Select ligand (or set of ligands)
 Ligand = 'Bmp4_Bmpr2'
