@@ -108,7 +108,7 @@ for j = 1:No_LR
     colormap(mycolor);
     colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
     
-    print([folder '\Cell_LR_' a{1} '_' b{1}],'-dpdf','-r300');
+    print([folder '\Cell_cell_' a{1} '_' b{1}],'-dpdf','-r300');
 end
 
 
@@ -133,7 +133,7 @@ title('cell\_LR\_all\_pairs','fontsize',12);
 colormap(mycolor);
 colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
 
-print([folder '\Cell_LR_all_pairs'],'-dpdf','-r300');
+print([folder '\Cell_cell_all_pairs'],'-dpdf','-r300');
 
 
 
@@ -168,7 +168,7 @@ for j = 1:No_LR
     colormap(mycolor);
     colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
     
-    print([folder '\Cluster_LR_' a{1} '_' b{1}],'-dpdf','-r300');
+    print([folder '\Cluster_cluster_' a{1} '_' b{1}],'-dpdf','-r300');
 end
 
 
@@ -201,7 +201,7 @@ end
     colormap(mycolor);
     colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
     
-    print([folder '\Cluster_LR_all_pairs'],'-dpdf','-r300');
+    print([folder '\Cluster_cluster_all_pairs'],'-dpdf','-r300');
 
 
 

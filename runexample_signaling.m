@@ -6,6 +6,13 @@
 % Tgfb, Wnt and Bmp.
 
 
+%% Setup  
+% NB NEED TO CREATE DIR 'SIGNALING' WITHIN RESULTS FOLDER
+resfolder = 'Results2';
+sigfolder = [resfolder '/Signaling'];
+dlmwrite('Data/Joost_cluster_labels.txt', cluster_label)
+
+
 % Run each section separately or run them all 
 %% Tgfb: ligand-receptor pairs and their target genes
 Lig = {{'Tgfb1'},{'Tgfb1'},{'Tgfb2'},{'Tgfb2'}};
@@ -25,15 +32,17 @@ Target = {{'Zeb2','Smad2','Wnt4','Wnt11','Bmp7','Sox9','Notch1'},...
 % Save the result figurs in folder Results\Signaling
 threshold = 0.1;
 
-% NB NEED TO CREATE DIR 'SIGNALING' WITHIN RESULTS FOLDER
-resfolder = 'Results';
-folder = [resfolder '/Signaling'];
-plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,folder)
+plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
 
+% Write P matrices to file
+P_write = Pall;
+dlmwrite([sigfolder '/P_all_' Lig{1}{1} '.txt'], P_write, 'delimiter','\t')
 
+for i = 1:size(Pidv,1)
+    dlmwrite([sigfolder '/P_' Lig{i}{1} '_' Rec{i}{1} '.txt'], Pidv{i}, 'delimiter','\t')
+end
 
-
-
+close all;
 
 
 
@@ -53,11 +62,18 @@ Target = {{'Ctnnb1','Lgr5','Runx2','Apc','Mmp7','Dkk1','Ccnd1'},...
 
 %
 threshold = 0.1;
-resfolder = 'Results';
-folder = [resfolder '/Signaling'];
-plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,folder)
 
+plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
 
+% Write P matrices to file
+P_write = Pall;
+dlmwrite([sigfolder '/P_all_' Lig{1}{1} '.txt'], P_write, 'delimiter','\t')
+
+for i = 1:size(Pidv,1)
+    dlmwrite([sigfolder '/P_' Lig{i}{1} '_' Rec{i}{1} '.txt'], Pidv{i}, 'delimiter','\t')
+end
+
+close all;
 
 
 
@@ -79,7 +95,15 @@ Target = {{'Crebbp','Fos','Id1','Jun','Runx1','Smad1','Smad5','Sox4','Cdh1'}, ..
 
 %
 threshold = 0.03;
-resfolder = 'Results';
-folder = [resfolder '/Signaling'];
-plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,folder)
 
+plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
+
+% Write P matrices to file
+P_write = Pall;
+dlmwrite([sigfolder '/P_all_' Lig{1}{1} '.txt'], P_write, 'delimiter','\t')
+
+for i = 1:size(Pidv,1)
+    dlmwrite([sigfolder '/P_' Lig{i}{1} '_' Rec{i}{1} '.txt'], Pidv{i}, 'delimiter','\t')
+end
+
+%close all;

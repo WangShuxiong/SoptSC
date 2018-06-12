@@ -1,4 +1,4 @@
-function plot_pseudotime(latent,Ptime,folder)
+function plot_pseudotime(latent,Ptime,resfolder)
 %% plot pseudotime on the latent space
 No_cell = size(latent,1);
 c = linspace(0,1,No_cell);
@@ -24,4 +24,4 @@ set(gca,'ytick',[]);
 set(gca,'FontName','Arial');
 set(gca,'FontSize',12);
 
-print([folder '\Pseudotime'],'-dpdf','-r300'); 
+print([resfolder '\Pseudotime'],'-dpdf','-r300'); 

@@ -76,7 +76,7 @@ nC = NC;
 % save eigenvalues of the graph Laplacian of the truncated consensus matrix
 if isempty(NC)
     T = table(eigenvalues(1:min([No_cells 100])));
-    writetable(T,[folder '/EigenValue.txt'],'WriteVariableNames',false);
+    writetable(T, [folder '/EigenValue.txt'], 'WriteVariableNames',false);
 end
 
 cluster_label = idx;
