@@ -8,7 +8,7 @@
 
 %% Setup  
 % NB NEED TO CREATE DIR 'SIGNALING' WITHIN RESULTS FOLDER
-resfolder = 'Results2';
+resfolder = 'Results';
 sigfolder = [resfolder '/Signaling'];
 dlmwrite('Data/Joost_cluster_labels.txt', cluster_label)
 
@@ -34,7 +34,7 @@ threshold = 0.1;
 
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
 
-% Write P matrices to file
+%% Write P matrices to file
 P_write = Pall;
 dlmwrite([sigfolder '/P_all_' Lig{1}{1} '.txt'], P_write, 'delimiter','\t')
 
@@ -65,7 +65,7 @@ threshold = 0.1;
 
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
 
-% Write P matrices to file
+%% Write P matrices to file
 P_write = Pall;
 dlmwrite([sigfolder '/P_all_' Lig{1}{1} '.txt'], P_write, 'delimiter','\t')
 
@@ -98,7 +98,7 @@ threshold = 0.03;
 
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
 
-% Write P matrices to file
+%% Write P matrices to file
 P_write = Pall;
 dlmwrite([sigfolder '/P_all_' Lig{1}{1} '.txt'], P_write, 'delimiter','\t')
 

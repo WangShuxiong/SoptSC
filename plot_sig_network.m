@@ -32,7 +32,7 @@ if threshold >= max_prob_idv
     display('Error: Threshold Is Too Large !!!');
     return;
 end
-    
+
 
 
 No_cluster = length(unique(cluster_label));
@@ -41,7 +41,8 @@ No_cells = length(cluster_label);
 cmap1 = jet;
 mymap1 = cmap1(1:end,:);
 ncolor = size(mymap1,1);
-mycolor = mymap1(1:round(ncolor./No_cluster):ncolor,:);
+mycolor2 = mymap1(1:round(ncolor./No_cluster):ncolor,:);
+mycolor = mycolor2(1:No_cluster,:);
 
 mycolor_cells = zeros(No_cells,3);
 
@@ -175,33 +176,33 @@ end
 %% plot cluster-cluster signlaing network based on all ligand-receptor pairs
 
 
-    P = Pall;
-    P(P<=threshold) = 0;
-    P_cluster = zeros(No_cluster);
-    for i1 = 1:No_cluster
-        for j1 = 1:No_cluster
-            P_cluster(i1,j1) = sum(sum(P(cluster_label==i1,cluster_label ==j1)));
-        end
+P = Pall;
+P(P<=threshold) = 0;
+P_cluster = zeros(No_cluster);
+for i1 = 1:No_cluster
+    for j1 = 1:No_cluster
+        P_cluster(i1,j1) = sum(sum(P(cluster_label==i1,cluster_label ==j1)));
     end
-    
-    adjacentM =P_cluster;
-    adjacentM(1:No_cluster+1:end) = 0;
-    if max(adjacentM(:)) > 0
-        adjacentM = adjacentM./max(adjacentM(:));
-    end
-    bg = digraph(adjacentM);
-    bg.Edges.LWidths = 10*bg.Edges.Weight/max(bg.Edges.Weight);
-    figure;
-    Gh = plot(bg,'Marker','o','MarkerSize',25,'Layout','circle','NodeLabel',[],...
-        'NodeColor',mycolor,'EdgeColor',[0.690196 0.768627 0.870588],'LineWidth',...
-        bg.Edges.LWidths,'ArrowSize',10);
-    set(gca,'xtick',[]);
-    set(gca,'ytick',[]);
-    title('Cluster\_LR\_all\_pairs','fontsize',12);
-    colormap(mycolor);
-    colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
-    
-    print([folder '\Cluster_cluster_all_pairs'],'-dpdf','-r300');
+end
+
+adjacentM =P_cluster;
+adjacentM(1:No_cluster+1:end) = 0;
+if max(adjacentM(:)) > 0
+    adjacentM = adjacentM./max(adjacentM(:));
+end
+bg = digraph(adjacentM);
+bg.Edges.LWidths = 10*bg.Edges.Weight/max(bg.Edges.Weight);
+figure;
+Gh = plot(bg,'Marker','o','MarkerSize',25,'Layout','circle','NodeLabel',[],...
+    'NodeColor',mycolor,'EdgeColor',[0.690196 0.768627 0.870588],'LineWidth',...
+    bg.Edges.LWidths,'ArrowSize',10);
+set(gca,'xtick',[]);
+set(gca,'ytick',[]);
+title('Cluster\_LR\_all\_pairs','fontsize',12);
+colormap(mycolor);
+colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
+
+print([folder '\Cluster_cluster_all_pairs'],'-dpdf','-r300');
 
 
 
