@@ -1,4 +1,4 @@
-This is a MATLAB implementation of SoptSC, a computational method for single cell data analysis. More specifically, SoptSC can
+This is a MATLAB implementation of SoptSC, a computational method for single cell data analysis. More specifically, SoptSC can (unsupervised)
 
 1. Identify the number of clusters from the input data.
 2. Identify cell subpopulations.
@@ -25,9 +25,12 @@ Please refer to each M file for more detailed descriptions of the corresponding 
 
 This directory includes:
 
-   1) Example.m -------- an example run of SOptSC on a specific dataset (see here for QUICKSTART).
+   1.1) runexample.m ———— an example run of SoptSC on a specific dataset (see here for QUICKSTART).
    
-   2) SoptSC_cluster.m  --------the M file contains all components of the algorithm for clusters. 
+   1.2)runexample_signaling.m ————— an example run of SoptSC on a a specific dataset
+for signaling network inference.
+
+   2) SoptSC_cluster.m  -------- the M file contains all components of the algorithm for clusters. 
     Please refer to this file for further information.
    
    3) Lineage_Ptime.m --------the M file contains all components of the algorithm for pseudotime and lineage inference.
