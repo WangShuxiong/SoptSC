@@ -31,7 +31,7 @@ Gene_labels(:,1) = gene_idx;
 
 %% data normalization
 for i = 1:size(data,2)
-    data(:,i) = data(:,i)./norm(data(:,i),2);
+    data(:,i) = data(:,i)./norm(data(:,i),1);
 end
 
 % for i = 1:m
