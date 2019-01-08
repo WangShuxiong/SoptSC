@@ -47,6 +47,9 @@ close all;
 
 
 
+
+
+
 %% Wnt: ligand-receptor pairs and their target genes 
 Lig = {{'Wnt3'},{'Wnt4'},{'Wnt5a'},{'Wnt6'},{'Wnt10a'}};
 Rec = {{'Fzd1'},{'Fzd1'},{'Fzd1'},{'Fzd1'},{'Fzd1'}};
@@ -60,7 +63,7 @@ Target = {{'Ctnnb1','Lgr5','Runx2','Apc','Mmp7','Dkk1','Ccnd1'},...
 [Pidv, Pall] = LR_Interaction(data, allgenes, Lig, Rec, Target);
 
 
-%
+%%
 threshold = 0.1;
 
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
@@ -93,7 +96,7 @@ Target = {{'Crebbp','Fos','Id1','Jun','Runx1','Smad1','Smad5','Sox4','Cdh1'}, ..
 [Pidv, Pall] = LR_Interaction(data, allgenes, Lig, Rec, Target);
 
 
-%
+%%
 threshold = 0.03;
 
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
