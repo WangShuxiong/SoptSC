@@ -16,10 +16,11 @@ end
 pred = Lineage;
 rootedTree = digraph(pred(pred~=0),find(pred~=0));
 
-load newmap.mat;
+% load newmap.mat;
+% mymap = newmap;
+
 figure;
-mymap = newmap;
-colormap(mymap);
+colormap(jet);
 % plot(rootedTree,'Marker','o','MarkerSize',20,'NodeCData',ptimecolor, 'NodeColor','flat','NodeLabel',[]);
 plot(rootedTree,'Marker','o','MarkerSize',20,'NodeCData',mkcolor, 'NodeColor','flat','NodeLabel',[]);
 

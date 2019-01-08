@@ -7,7 +7,7 @@
 
 
 %% Setup  
-% NB NEED TO CREATE DIR 'SIGNALING' WITHIN RESULTS FOLDER
+% save cluster labels to sigfolder
 resfolder = 'Results';
 sigfolder = [resfolder '/Signaling'];
 dlmwrite('Data/Joost_cluster_labels.txt', cluster_label)
@@ -26,7 +26,7 @@ Target = {{'Zeb2','Smad2','Wnt4','Wnt11','Bmp7','Sox9','Notch1'},...
 [Pidv, Pall] = LR_Interaction(data, allgenes, Lig, Rec, Target);
 
 
-% Plot the (cell-cell and cluster-cluster) signaling network for Tgfb.
+%% Plot the (cell-cell and cluster-cluster) signaling network for Tgfb.
 % Set the threshold such that the probability between cells or clusters
 % less than the value of threshold is set to be zero. 
 % Save the result figurs in folder Results\Signaling

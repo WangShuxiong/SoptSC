@@ -63,12 +63,7 @@ for ii = 1:No_cells
     mycolor_cells(ii,:) = mycolor(true_labs(ii),:);
 end
 
-%% plot cell-cell signaling network based on cluster labels
-
-% color5 = zeros(size(W,1),3);
-% for i = 1:5
-%     color5(find(true_labs1==i),:) = ones(length(find(true_labs1==i)),1).*zzz(i,:);
-% end
+%% plot cell-cell signaling network based on each individual ligand-receptor pair
 lgd = cell(1,No_cluster);
 for i = 1:No_cluster
     if i<10
@@ -90,26 +85,26 @@ for j = 1:No_LR
     P = Pidv{j};
     P(P<=threshold) = 0;
     adjacentM =P(new_order,new_order);
-    adjacentM(1:No_cells+1:end) = 0;
+    %     adjacentM(1:No_cells+1:end) = 0;
     if max(adjacentM(:)) > 0
         adjacentM = adjacentM./max(adjacentM(:));
+        bg = digraph(adjacentM);
+        bg.Edges.LWidths = 3*bg.Edges.Weight/max(bg.Edges.Weight);
+        figure;
+        
+        Gh = plot(bg,'Marker','o','MarkerSize',5,'Layout','circle','NodeLabel',[],...
+            'NodeColor',mycolor_cells,'EdgeColor',[0.690196 0.768627 0.870588],'LineWidth',...
+            bg.Edges.LWidths,'ArrowSize',8);
+        set(gca,'xtick',[]);
+        set(gca,'ytick',[]);
+        a = Lig{j};
+        b= Rec{j};
+        title([a{1} '\_' b{1}],'fontsize',12);
+        colormap(mycolor);
+        colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
+        
+        print([folder '\Cell_cell_' a{1} '_' b{1}],'-dpdf','-r300');
     end
-    bg = digraph(adjacentM);
-    bg.Edges.LWidths = 3*bg.Edges.Weight/max(bg.Edges.Weight);
-    figure;
-    
-    Gh = plot(bg,'Marker','o','MarkerSize',5,'Layout','circle','NodeLabel',[],...
-        'NodeColor',mycolor_cells,'EdgeColor',[0.690196 0.768627 0.870588],'LineWidth',...
-        bg.Edges.LWidths,'ArrowSize',8);
-    set(gca,'xtick',[]);
-    set(gca,'ytick',[]);
-    a = Lig{j};
-    b= Rec{j};
-    title([a{1} '\_' b{1}],'fontsize',12);
-    colormap(mycolor);
-    colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
-    
-    print([folder '\Cell_cell_' a{1} '_' b{1}],'-dpdf','-r300');
 end
 
 
@@ -117,15 +112,14 @@ end
 P = Pall;
 P(P<=threshold) = 0;
 adjacentM =P(new_order,new_order);
-adjacentM(1:No_cells+1:end) = 0;
+% adjacentM(1:No_cells+1:end) = 0;
 if max(adjacentM(:)) > 0
     adjacentM = adjacentM./max(adjacentM(:));
-end
 bg = digraph(adjacentM);
 bg.Edges.LWidths = 3*bg.Edges.Weight/max(bg.Edges.Weight);
 figure;
 
-Gh = plot(bg,'Marker','o','MarkerSize',5,'Layout','circle','NodeLabel',[],...
+plot(bg,'Marker','o','MarkerSize',5,'Layout','circle','NodeLabel',[],...
     'NodeColor',mycolor_cells,'EdgeColor',[0.690196 0.768627 0.870588],'LineWidth',...
     bg.Edges.LWidths,'ArrowSize',8);
 set(gca,'xtick',[]);
@@ -135,7 +129,7 @@ colormap(mycolor);
 colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
 
 print([folder '\Cell_cell_all_pairs'],'-dpdf','-r300');
-
+end
 
 
 %% plot cluster-cluster signaling network based on each individual ligand-receptor pair
@@ -151,10 +145,9 @@ for j = 1:No_LR
     end
     
     adjacentM =P_cluster;
-    adjacentM(1:No_cluster+1:end) = 0;
+%     adjacentM(1:No_cluster+1:end) = 0;
     if max(adjacentM(:)) > 0
         adjacentM = adjacentM./max(adjacentM(:));
-    end
     bg = digraph(adjacentM);
     bg.Edges.LWidths = 10*bg.Edges.Weight/max(bg.Edges.Weight);
     figure;
@@ -170,12 +163,11 @@ for j = 1:No_LR
     colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
     
     print([folder '\Cluster_cluster_' a{1} '_' b{1}],'-dpdf','-r300');
+    end
 end
 
 
 %% plot cluster-cluster signlaing network based on all ligand-receptor pairs
-
-
 P = Pall;
 P(P<=threshold) = 0;
 P_cluster = zeros(No_cluster);
@@ -186,10 +178,9 @@ for i1 = 1:No_cluster
 end
 
 adjacentM =P_cluster;
-adjacentM(1:No_cluster+1:end) = 0;
+% adjacentM(1:No_cluster+1:end) = 0;
 if max(adjacentM(:)) > 0
     adjacentM = adjacentM./max(adjacentM(:));
-end
 bg = digraph(adjacentM);
 bg.Edges.LWidths = 10*bg.Edges.Weight/max(bg.Edges.Weight);
 figure;
@@ -203,7 +194,7 @@ colormap(mycolor);
 colorbar('Ticks',tickval,'TickLabels',lgd,'FontSize',12);
 
 print([folder '\Cluster_cluster_all_pairs'],'-dpdf','-r300');
-
+end
 
 
 

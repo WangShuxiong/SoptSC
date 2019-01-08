@@ -21,6 +21,7 @@ function Gene_labels = GC_heatmap(data,cluster_label,H,No_exc_cell,No_select_gen
 
 [~,gene_idx] = Data_selection(data,No_exc_cell,No_select_genes);
 
+
 data = data(gene_idx,:);
 
 NC = max(cluster_label);
@@ -29,14 +30,11 @@ Gene_labels = zeros(m,3);
 
 Gene_labels(:,1) = gene_idx;
 
-%% data normalization
-for i = 1:size(data,2)
-    data(:,i) = data(:,i)./norm(data(:,i),1);
-end
-
-% for i = 1:m
-%     data(i,:) = data(i,:)./norm(data(i,:),2);
+% %% data normalization
+% for i = 1:size(data,2)
+%     data(:,i) = data(:,i)./norm(data(:,i),1);
 % end
+
 
 
 G_latent = data*H;
@@ -64,19 +62,6 @@ for i = 1:NC
     Y = find(cluster_label==i);
     CGI = [CGI; Y];
 end
-
-%% allgenes string to cell
-% allgs = cell(size(allgenes));
-% for i = 1:length(allgs)
-%     allgs{i} = allgenes{i};
-% end
-% %% plot gene-cell heatmap
-% RowLabelsValue = allgs(gene_idx);
-% % HeatMap(data(OGI,CGI),'RowLabels', ColumnLabelsValue)
-% HMdata = data(OGI,CGI);
-% 
-% HeatMap(HMdata,'RowLabels', RowLabelsValue,'Standardize',2,'DisplayRange',2,'Colormap',redbluecmap)
-
 
 %% data normalization and zscroe
 % kk = 1 row; kk = 2 column

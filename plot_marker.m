@@ -31,12 +31,12 @@ MM = data(gene_set_idx,:);
 
 %% Marker genes expression on each subpopulation
 
-load newmap.mat;
-mymap = newmap;
+% load newmap.mat;
+% mymap = newmap;
 
 for ik = 1:gene_set_no
     figure;
-    colormap(mymap);
+    colormap(jet);
     scatter(latent(:,1),latent(:,2),20,MM(ik,:),'filled','MarkerEdgeAlpha',0.8,'MarkerFaceAlpha',0.8);
     title(gene_set{ik});
     box off;
@@ -65,8 +65,6 @@ for ik = 1:gene_set_no
     for ii = 2:length(cb.TickLabels)-1
         cb.TickLabels{ii} = [];
     end
-    
-    
     print([resfolder '\mk_ldm_' gene_set{ik}],'-dpdf','-r300');
 end
 end

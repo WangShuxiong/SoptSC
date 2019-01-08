@@ -1,7 +1,7 @@
-% This is an example for applying SoptSC to scRNA-seq data (Joost et al. 2016) to perform
+% This is an example for applying SoptSC to scJoost Data to perform unsupervised
 %   - Clustering
-%   - Marker genes identified for each cluster
-%   - Cell lineage
+%   - Marker genes identification for each cluster
+%   - Lineage
 %   - Pseudotiime
 %   - Cell-to-cell signaling network for given ligand-receptor pairs and
 %     downstream target genes
@@ -24,14 +24,13 @@ addpath('Data');
 addpath('NNDSVD');
 addpath('symnmf2');
 addpath('Signaling');
-addpath('vinlinplot');
 
 Data_all = importdata('JoostData.txt');
 data_matrix = Data_all.data;
 allgenes = Data_all.textdata(2:end,1);
 
 
-%% Log normalization
+%% Log normalization of data
 data = log10(data_matrix +1);
 
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
@@ -67,10 +66,6 @@ Gene_labels_topn = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell1,No_
 %% Plot gene expression on the low-dimensional projection of cells
 Marker = {'Krt14','Mt2','Krt10','Ptgs1','Lor','Flg2'};
 plot_marker(data,Marker,allgenes,latent,resfolder) 
-
-
-%% Violin plot of marker genes along clusters
-plot_marker_violin(data,allgenes,Marker,cluster_label,No_cluster,resfolder)
 
 
 %% Bar plot of marker genes along clusters
