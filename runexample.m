@@ -25,6 +25,7 @@ addpath('NNDSVD');
 addpath('symnmf2');
 addpath('Signaling');
 addpath('vinlinplot');
+addpath('Results')
 
 Data_all = importdata('JoostData.txt');
 data_matrix = Data_all.data;
