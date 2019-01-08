@@ -32,12 +32,16 @@ dd = cc(2:end)./sum(pca_eigvalue1(2:end));
 
 K1 = length(find(dd<=0.3));
 
-if K1 <= 10
-    K = 10;
-elseif K1 >=30
-    K = 30;
+if n > 5000
+    K = 100;
 else
-    K = K1+1;
+    if K1 <= 10
+        K = 10;
+    elseif K1 >=30
+        K = 30;
+    else
+        K = K1+1;
+    end
 end
 dim_init = 3;
 InitY = pca1(data',dim_init);
