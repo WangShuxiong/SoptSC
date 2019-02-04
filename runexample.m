@@ -61,7 +61,7 @@ Gene_idx = GC_htmp_DE(data,allgenes,cluster_label,topn,resfolder);
 
 %% Plot gene expression on the low-dimensional projection of cells
 Marker = {'Krt14','Mt2','Krt10','Ptgs1','Lor','Flg2'};
-plot_marker(data,Marker,allgenes,latent,resfolder) 
+plot_marker(data,Marker,allgenes,latent,resfolder)
 
 
 %% Violin plot of marker genes along clusters
