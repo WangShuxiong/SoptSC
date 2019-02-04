@@ -64,8 +64,7 @@ topn = 10;
 Gene_labels_topn = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell1,No_select_genes,topn,resfolder);
 
 
-%% Identification of marker genes and plots gene-cell heatmap of topn markers
-topn = 10;
+%% 
 Gene_idx = GC_htmp_DE(data,allgenes,cluster_label,topn,resfolder);
 
 %% Plot gene expression on the low-dimensional projection of cells
