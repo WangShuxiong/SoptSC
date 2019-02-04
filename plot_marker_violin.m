@@ -33,7 +33,7 @@ end
 
 for i = 1:length(Marker)
 [~,ia,~] = intersect(allgenes,Marker{i},'stable');
-figure(i)
+figure
 h = violinplot(data(ia,cell_order),cluster_label1,1:No_cluster);
     for j = 1:No_cluster
         h(j).ViolinColor = mycolor(j,:);
