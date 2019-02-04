@@ -62,6 +62,8 @@ title(Marker{i});
 % ax.YLimMode = 'manual';
 % ax.ZLimMode = 'manual';
 
+box off;
+grid on;
 
 
 ax = gca;

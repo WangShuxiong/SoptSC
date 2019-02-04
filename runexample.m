@@ -53,15 +53,6 @@ plot_eigengap(eigenvalues,resfolder);
 method = 'tsne';        % set method as 'pca' or 'tsne'
 latent = plot_cluster(W,cluster_label,No_cluster,method,resfolder);
 
-%% Gene-cell heatmap for all genes
-No_exc_cell1 =6;
-No_select_genes = 20000;
-
-Gene_labels_all = GC_heatmap(data,cluster_label,H,No_exc_cell1,No_select_genes);
-
-%% Gene-cell heatmap for top n markers w.r.t each cluster
-topn = 10;
-Gene_labels_topn = GC_heatmapTopn(data,cluster_label,H,allgenes,No_exc_cell1,No_select_genes,topn,resfolder);
 
 
 %% Identification of marker genes and plots gene-cell heatmap of topn markers
@@ -77,7 +68,7 @@ plot_marker(data,Marker,allgenes,latent,resfolder)
 plot_marker_violin(data,allgenes,Marker,cluster_label,No_cluster,resfolder)
 
 
-%% Bar plot of marker genes along clusters
+%% Bar plot of marker genes along clusters (optional)
 boxplot_marker(data,allgenes,Marker,cluster_label,No_cluster,resfolder);
 
 
