@@ -2,6 +2,7 @@ function plot_pseudotime(latent,Ptime,resfolder)
 %% plot pseudotime on the latent space
 No_cell = size(latent,1);
 c = linspace(0,1,No_cell);
+figure;
 colormap parula;
 cmap = colormap;
 mymap = cmap(1:58,:);
