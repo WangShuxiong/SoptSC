@@ -32,6 +32,6 @@
 	> 8. plot_lineage.m --- plot cluster and pseudotime on the inferred lineage tree. \
 	> 9. plot_lineage_marker.m --- plot marker genes on the inferred lineage tree. \
 	> 10. plot_marker.m --- plot marker genes on the low dimensional space of cells. \
-	> 11. newmap.mat --- colormap used for plot_genes. \
+	> 11. newmap.mat --- colormap used for plot_genes. 
 	-----
-> **Please feel free to contact us if you have any question: shuxionw@uci.edu**
+> **Please feel free to contact us if you have any question: shuxionw 'at' uci 'dot' edu**
