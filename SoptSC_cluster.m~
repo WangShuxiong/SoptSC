@@ -230,7 +230,7 @@ Z = zeros(n); E = zeros(m,n);
 Y1 = zeros(m,n); Y2 = zeros(1,n); Y3 = zeros(n,n);
 iter = 0;
 
-% display('Iter  Err');
+display('Iter  Err');
 while 1
     iter = iter + 1;
     if iter >= maxiter
@@ -244,15 +244,15 @@ while 1
     R = length(diag(S));
     Dmu = zeros(R,R);
     MM = max(diag(S)-(1/mu)*ones(R,1),zeros(R,1));
-    %     for i = 1:R
-    %         Dmu(i,i) = MM(i);
-    %     end
-    Dmu(1:R+1:end) = MM;
+%     for i = 1:R
+%         Dmu(i,i) = MM(i);
+%     end
     
+
     J = U*Dmu*V';
     
     if iter >= 3
-        if Err(iter-1,1) >= Err(iter-2,1) || max(max(Err(iter,:)),norm(X-X*Z)) <= epsilon
+        if Err(iter-1,1) >= Err(iter-2,1) || norm(X-X*Z) <= epsilon
             break;
         end
     end
@@ -260,19 +260,15 @@ while 1
     
     % Update E
     Q = X-X*Z+Y1/mu;
-    %     for j = 1:n
-    %         if norm(Q(:,j)) > lambda/mu
-    %             E(:,j) = ((norm(Q(:,j))-lambda/mu)/norm(Q(:,j)))*Q(:,j);
-    %         else
-    %             E(:,j) = zeros(length(Q(:,j)),1);
-    %         end
-    %     end
+    for j = 1:n
+        if norm(Q(:,j)) > lambda/mu
+            E(:,j) = ((norm(Q(:,j))-lambda/mu)/norm(Q(:,j)))*Q(:,j);
+        else
+            E(:,j) = zeros(length(Q(:,j)),1);
+        end
+    end
     
-    aa = max(sqrt(sum(Q.^2)) - lambda/mu,0)./sqrt(sum(Q.^2));
-    E = Q.*aa;
-    
-%     eta = norm(X)^2 + norm(ones(n,1))^2+1;
-    eta = sum( X(:).^2)  + n +1;
+    eta = norm(X)^2 + norm(ones(n,1))^2+1;
     H = -X'*(X - X*Z - E + (1/mu)*Y1) - ones(n,1)*(ones(n,1)'- ones(n,1)'*Z + (1/mu)*Y2) + ...
         (Z - J + (1/mu)*Y3);
     Z = Z - (1/eta)*H;
@@ -283,11 +279,11 @@ while 1
     Y2 = Y2 + mu*(ones(1,n) - ones(1,n)*Z);
     Y3 = Y3 + mu*(Z - J);
     
-%     fprintf('%d, %8.6f\n',iter,norm(X-X*Z-E));
-%     Err(iter,:) = [norm(X-X*Z-E) norm(Z-J)];
-    Err(iter,:) = [sqrt( sum(sum((X-X*Z-E).^2)) ) sqrt(sum(sum((Z-J).^2))) ];
-%     if max(Err(iter,:)) <= epsilon
-%         break;
-%     end
+    fprintf('%d, %8.6f\n',iter,norm(X-X*Z-E));
+    Err(iter,:) = [norm(X-X*Z-E) norm(Z-J)];
+    
+    if max(Err(iter,:)) <= epsilon
+        break;
+    end
 end
 end

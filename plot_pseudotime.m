@@ -7,7 +7,7 @@ colormap parula;
 cmap = colormap;
 mymap = cmap(1:58,:);
 colormap(mymap);
-scatter(latent(Ptime,1),latent(Ptime,2),30,c,'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
+scatter(latent(:,1),latent(:,2),30,Ptime./max(Ptime(:)),'filled','MarkerEdgeAlpha',0.6,'MarkerFaceAlpha',0.6);
 
 
 cb = colorbar;

@@ -43,7 +43,9 @@ No_cells = size(data,2);
 No_exc_cell = 0.03*No_cells;
 No_features = 3000;
 
+
 [W,No_cluster,cluster_label,H,eigenvalues] = SoptSC_cluster(data,NC,No_exc_cell,No_features,resfolder);
+time = toc
 %% Plot Eigen-gap of truncated graph Laplacian of the consensus matrix (if NC = [])
 plot_eigengap(eigenvalues,resfolder);
 
@@ -76,15 +78,15 @@ boxplot_marker(data,allgenes,Marker,cluster_label,No_cluster,resfolder);
 root_cluster = 0;
 root_cell = 0;
 reverse = 1;
-[Lineage, pseudotime] = Lineage_Ptime(W,No_cluster,cluster_label,root_cluster,root_cell,latent,reverse);
+[Lineage, Ptime,Cell_dist] = Lineage_Ptime(W,No_cluster,cluster_label,root_cluster,root_cell,latent,reverse);
 
 
 %% Plot cluster color and pseudotime color on the lineage tree
-plot_lineage(Lineage,No_cluster,cluster_label,pseudotime,resfolder);
+plot_lineage(Lineage,No_cluster,cluster_label,Cell_dist,resfolder);
 
 
 %% Plot pseudotime on latent space
-plot_pseudotime(latent,pseudotime,resfolder);
+plot_pseudotime(latent,Ptime,resfolder);
 
 %% Plot marker gene on the lineage tree
 

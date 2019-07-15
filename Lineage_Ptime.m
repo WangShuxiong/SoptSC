@@ -1,4 +1,4 @@
-function [Lineage, Ptime,Cell_dist] = Lineage_Ptime(W,No_cluster,cluster_label,root_cluster,root_cell,latent,reverse)
+function [Lineage, Cell_dist] = Lineage_Ptime(W,No_cluster,cluster_label,root_cluster,root_cell,latent,reverse)
 % Computing lineage and pseudotime.
 %
 % Input
