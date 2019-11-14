@@ -239,7 +239,7 @@ while 1
     
     % step 1: Update J
     mu = min(rho*mu,mumax);
-    [U,S,V] = svd(Z-Y3/mu);
+    [U,S,V] = svd(Z-Y3/mu,'econ');
     
     R = length(diag(S));
     Dmu = zeros(R,R);
@@ -252,7 +252,9 @@ while 1
     J = U*Dmu*V';
     
     if iter >= 3
-        if Err(iter-1,1) >= Err(iter-2,1) || max(max(Err(iter,:)),norm(X-X*Z)) <= epsilon
+     %   if Err(iter-1,1) >= Err(iter-2,1) || max(max(Err(iter,:)),norm(X-X*Z)) <= epsilon
+        if Err(iter-1,1) >= Err(iter-2,1) || max(max(Err(iter,:)),sqrt(sum(sum( (X-X*Z).^2))) ) <= epsilon
+
             break;
         end
     end
