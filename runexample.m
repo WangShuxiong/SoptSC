@@ -2,14 +2,14 @@
 %   - Clustering
 %   - Marker genes identified for each cluster
 %   - Cell lineage
-%   - Pseudotiime
+%   - Pseudotime
 %   - Cell-to-cell signaling network for given ligand-receptor pairs and
 %     downstream target genes
 %   - Cluster-to-cluster signaling network for given ligand-receptor pairs
 %     and downstream target genes
 %
 %   All details of the function can be found in the corresponding function
-%   files. Plsease refer to each M file of functions for the discription of
+%   files. Please refer to each M file of functions for the description of
 %   input and output.
 %
 %   Results are save in the folder: Results
