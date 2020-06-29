@@ -140,7 +140,8 @@ for j = 1:No_LR
     P_cluster = zeros(No_cluster);
     for i1 = 1:No_cluster
         for j1 = 1:No_cluster
-            P_cluster(i1,j1) = sum(sum(P(cluster_label==i1,cluster_label ==j1)));
+            aa = P(cluster_label==i1,cluster_label ==j1);
+            P_cluster(i1,j1) = sum(aa(:))./length(aa(:));
         end
     end
     
@@ -173,7 +174,8 @@ P(P<=threshold) = 0;
 P_cluster = zeros(No_cluster);
 for i1 = 1:No_cluster
     for j1 = 1:No_cluster
-        P_cluster(i1,j1) = sum(sum(P(cluster_label==i1,cluster_label ==j1)));
+        aa = P(cluster_label==i1,cluster_label ==j1);
+        P_cluster(i1,j1) = sum(aa(:))./length(aa);
     end
 end
 
