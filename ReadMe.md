@@ -3,8 +3,8 @@
 
 * SoptSC is also avaiable as a R package at: https://mkarikom.github.io/RSoptSC/
 * For citation, please refer to 
-	> Wang, S., Karikomi, M., MacLean, A.L. and Nie, Q., Cell lineage and communication network inference via optimization for single-cell transcriptomics, Nucleic acids research, 2019.
-	> https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkz204/5421812
+	> [Cell lineage and communication network inference via optimization for single-cell transcriptomics](https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkz204/5421812), S. Wang, et al., Nucleic acids research, 2019.
+	> Data used for this tutorial comes from [Single cell transcriptomics of human epidermis identifies basal stem cell transition states](https://www.nature.com/articles/s41467-020-18075-7), S. Wang, et al.,Nature Communications, 2020. 
 
 * Key features of SoptSC
 	> 1. Estimation of the number of clusters from the single-cell data.
@@ -16,22 +16,16 @@
 	----------------------
 
 - Requires: 
-	> MATLAB R2017b or later (where function tSNE is included)
-	> or Update the Statistics and Machine Learning Toolbox such that the function tSNE (t-Distributed Stochastic Neighbor Embedding) is included.
+	> MATLAB R2019 or later
 	> Please refer to each M file for more detailed descriptions of the corresponding function.
+	
+## Data used for each figure is deposit under folder 'Data'
 
-- Main functions:
-	> 1.1. runexample.m --- an example run of SoptSC on a specific dataset (see here for QUICKSTART). \
-	> 1.2. runexample_signaling.m --- an example run of SoptSC on a a specific dataset for signaling network inference. \
-	> 2. SoptSC_cluster.m  --- the M file contains all components of the algorithm for clusters. \
-	> 3. Lineage_Ptime.m ---the M file contains all components of the algorithm for pseudotime and lineage inference. \
-	> 4. symnmf2 --- non-negative matrix factorization (NMF) tool from: [1] Da Kuang, Chris Ding, Haesun Park, Symmetric Nonnegative Matrix Factorization for Graph Clustering, The 12th SIAM International Conference on Data Mining. (SDM '12), pp. 106--117. \
-	> 5. NNDSVD --- SVD-based initialization for NMF from: [2] C. Boutsidis and E. Gallopoulos, SVD-based initialization: A head start for nonnegative matrix factorization, Pattern Recognition, Elsevier. \
-	> 6. Plot_cluster.m --- Plot clusters on 2-dimensional space. \
-	> 7. Plot_eigengap.m --- Plot eigenvalues of the truncated graph Laplacian to illustrate the estimation of number of clusters. \
-	> 8. plot_lineage.m --- plot cluster and pseudotime on the inferred lineage tree. \
-	> 9. plot_lineage_marker.m --- plot marker genes on the inferred lineage tree. \
-	> 10. plot_marker.m --- plot marker genes on the low dimensional space of cells. \
-	> 11. newmap.mat --- colormap used for plot_genes. 
-	-----
-> **Please feel free to contact us if you have any question: shuxionw 'at' uci 'dot' edu**
+## Tutorials
+- [Code for main Figures 1 & 2](https://htmlpreview.github.io/?https://github.com/WangShuxiong/Human_Epi/blob/master/Main_Figure1_2.html)
+- [Code for ming Figure 3](https://htmlpreview.github.io/?https://github.com/WangShuxiong/Human_Epi/blob/master/Main_Figure3.html)
+- [Code for ming Figure 4](https://htmlpreview.github.io/?https://github.com/WangShuxiong/Human_Epi/blob/master/Main_Figure4.html)
+- [Code for ming Figure 5](https://htmlpreview.github.io/?https://github.com/WangShuxiong/Human_Epi/blob/master/Main_Figure5.html)
+
+
+**Please feel free to contact us if you have any question: shuxionw 'at' uci 'dot' edu**
