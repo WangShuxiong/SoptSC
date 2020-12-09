@@ -1,0 +1,6 @@
+clear
+rm ../StochasticGradientDescent
+clang++ StochasticGradientDescent.cpp -o StochasticGradientDescent -Ofast
+mv StochasticGradientDescent ../.
+
+
