@@ -16,12 +16,12 @@
 	----------------------
 
 - Requires: 
-	> MATLAB R2019 or later
+	> MATLAB R2019 or later.
 	> Please refer to each M file for more detailed descriptions of the corresponding function.
 	
-## Data used for each figure is deposit under folder 'Data'
+#### Data used for each figure is deposit under folder 'Data'
 
-## Tutorials
+### Tutorials
 - [Click here to go through all the steps](https://htmlpreview.github.io/?https://github.com/WangShuxiong/SoptSC/blob/master/run_example.html)
 
 **Please feel free to contact us if you have any question: shuxionw 'at' uci 'dot' edu**
