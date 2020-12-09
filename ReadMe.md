@@ -22,6 +22,6 @@
 ## Data used for each figure is deposit under folder 'Data'
 
 ## Tutorials
-- [Click here to go through all the steps](https://htmlpreview.github.io/?https://https://github.com/WangShuxiong/SoptSC/blob/master/run_example.html)
+- [Click here to go through all the steps](https://htmlpreview.github.io/?https://github.com/WangShuxiong/SoptSC/blob/master/run_example.html)
 
 **Please feel free to contact us if you have any question: shuxionw 'at' uci 'dot' edu**
