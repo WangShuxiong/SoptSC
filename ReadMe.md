@@ -22,10 +22,6 @@
 ## Data used for each figure is deposit under folder 'Data'
 
 ## Tutorials
-- [Code for main Figures 1 & 2](https://htmlpreview.github.io/?https://github.com/WangShuxiong/Human_Epi/blob/master/Main_Figure1_2.html)
-- [Code for ming Figure 3](https://htmlpreview.github.io/?https://github.com/WangShuxiong/Human_Epi/blob/master/Main_Figure3.html)
-- [Code for ming Figure 4](https://htmlpreview.github.io/?https://github.com/WangShuxiong/Human_Epi/blob/master/Main_Figure4.html)
-- [Code for ming Figure 5](https://htmlpreview.github.io/?https://github.com/WangShuxiong/Human_Epi/blob/master/Main_Figure5.html)
-
+- [Click here to go through all the steps](https://htmlpreview.github.io/?https://https://github.com/WangShuxiong/SoptSC/blob/master/run_example.html)
 
 **Please feel free to contact us if you have any question: shuxionw 'at' uci 'dot' edu**
