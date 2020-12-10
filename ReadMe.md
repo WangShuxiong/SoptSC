@@ -14,8 +14,10 @@
 	> 6. Infer signaling network given a group of Ligand-Receptor pairs and their downstream target genes (to be updated).
 
 ### Tutorials
+- Requires: MATLAB R2019 or later. 
 - [Click here to go through all the steps](https://htmlpreview.github.io/?https://github.com/WangShuxiong/SoptSC/blob/master/run_example.html)
 - Data used for each figure is deposit under folder 'Data'
+- Please refer to each M file for more detailed descriptions of the corresponding function.
 
 
 * For citation, please refer to 
@@ -23,10 +25,7 @@
 	
 	> Data used for this tutorial comes from [Single cell transcriptomics of human epidermis identifies basal stem cell transition states](https://www.nature.com/articles/s41467-020-18075-7), S. Wang, et al.,Nature Communications, 2020. 
 
-* Requires: 
-	> MATLAB R2019 or later. 
-	
-	> Please refer to each M file for more detailed descriptions of the corresponding function.
+ 	
 
 
 **Please feel free to contact us if you have any question: shuxionw 'at' uci 'dot' edu**
