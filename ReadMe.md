@@ -7,11 +7,11 @@
 
 ### Key features of SoptSC
 	> 1. Estimation of the number of clusters from the single-cell data.
-	> 2. Identify cell subpopulations.
-	> 3. Identify marker genes for each cell subpopulation.
-	> 4. Infer pseudotime (temporal ordering of cells) in an unsupervised manner: i.e., initial cell is not required.
-	> 5. Infer lineage in an unsupervised manner: i.e., initial cluster is not required. 
-	> 6. Infer signaling network given a group of Ligand-Receptor pairs and their downstream target genes (to be updated).
+	> 2. Identification of cell subpopulations.
+	> 3. Identification of DEGs for each cell subpopulation.
+	> 4. Inference of pseudotime in an unsupervised manner: i.e., initial cell is not required.
+	> 5. Inference of cell lineage and trajectory in an unsupervised manner: i.e., initial cluster is not required. 
+	> 6. Inference of cell-cell communication network given a group of Ligand-Receptor pairs and their downstream target genes.
 
 ### Tutorials
 - Requires: MATLAB R2019 or later. 
