@@ -14,10 +14,10 @@
 	> 4. Infer pseudotime (temporal ordering of cells) in an unsupervised manner: i.e., initial cell is not required.
 	> 5. Infer lineage in an unsupervised manner: i.e., initial cluster is not required. 
 	> 6. Infer signaling network given a group of Ligand-Receptor pairs and their downstream target genes (to be updated).
-	----------------------
 
-- Requires: 
+* Requires: 
 	> MATLAB R2019 or later. 
+	
 	> Please refer to each M file for more detailed descriptions of the corresponding function.
 
 ### Tutorials
