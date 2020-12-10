@@ -1,4 +1,4 @@
-### This is the MATLAB software of SoptSC 
+## SoptSC 
 #### An optimization based method for the inference of clustering, cell lineage, pseudotime and cell-cell communication network from single cell RNA-seq data. 
 
 * SoptSC is also avaiable as a R package at: https://mkarikom.github.io/RSoptSC/
