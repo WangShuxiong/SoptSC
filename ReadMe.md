@@ -20,10 +20,9 @@
 - Please refer to each M file for more detailed descriptions of the corresponding function.
 
 
-* For citation, please refer to 
-	> [Cell lineage and communication network inference via optimization for single-cell transcriptomics](https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkz204/5421812), S. Wang, et al., Nucleic acids research, 2019.
-	
-	> Data used for this tutorial comes from [Single cell transcriptomics of human epidermis identifies basal stem cell transition states](https://www.nature.com/articles/s41467-020-18075-7), S. Wang, et al.,Nature Communications, 2020. 
+### For citation, please refer to 
+-  [Cell lineage and communication network inference via optimization for single-cell transcriptomics](https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkz204/5421812), S. Wang, et al., Nucleic acids research, 2019.	
+- Data used for this tutorial comes from [Single cell transcriptomics of human epidermis identifies basal stem cell transition states](https://www.nature.com/articles/s41467-020-18075-7), S. Wang, et al.,Nature Communications, 2020. 
 
  	
 
