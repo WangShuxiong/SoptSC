@@ -1,7 +1,7 @@
 ## SoptSC 
 #### Package used for the inference of clustering, cell lineage, pseudotime and cell-cell communication network from scRNA-seq data. 
 
-![SoptSC](Images/SoptSC.png?raw=true)
+![SoptSC](Image/SoptSC.png?raw=true)
 
 * SoptSC is also avaiable as a R package at: https://mkarikom.github.io/RSoptSC/
 * For citation, please refer to 
