@@ -13,6 +13,11 @@
 	> 5. Infer lineage in an unsupervised manner: i.e., initial cluster is not required. 
 	> 6. Infer signaling network given a group of Ligand-Receptor pairs and their downstream target genes (to be updated).
 
+### Tutorials
+- [Click here to go through all the steps](https://htmlpreview.github.io/?https://github.com/WangShuxiong/SoptSC/blob/master/run_example.html)
+- Data used for each figure is deposit under folder 'Data'
+
+
 * For citation, please refer to 
 	> [Cell lineage and communication network inference via optimization for single-cell transcriptomics](https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkz204/5421812), S. Wang, et al., Nucleic acids research, 2019.
 	
@@ -23,8 +28,5 @@
 	
 	> Please refer to each M file for more detailed descriptions of the corresponding function.
 
-### Tutorials
-- [Click here to go through all the steps](https://htmlpreview.github.io/?https://github.com/WangShuxiong/SoptSC/blob/master/run_example.html)
-- Data used for each figure is deposit under folder 'Data'
 
 **Please feel free to contact us if you have any question: shuxionw 'at' uci 'dot' edu**
