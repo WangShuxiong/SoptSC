@@ -21,7 +21,7 @@
 
 #### Performance on clustering
 
-![Clustering](Image/SoptSC1.png?raw=true)
+![Clustering](Image/Clustering.png?raw=true)
 
 
 ### For citation, please refer to 
