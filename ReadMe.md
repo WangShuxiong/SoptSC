@@ -20,9 +20,7 @@
 - Please refer to each M file for more detailed descriptions of the corresponding function.
 
 #### Performance on clustering
-
 ![Clustering](Image/Clustering.png?raw=true)
-
 
 ### For citation, please refer to 
 -  [Cell lineage and communication network inference via optimization for single-cell transcriptomics](https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkz204/5421812), S. Wang, et al., Nucleic acids research, 2019.	
